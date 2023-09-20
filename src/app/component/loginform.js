@@ -1,27 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import {
   Button,
   Link,
   FilledInput,
   FormControl,
   Checkbox,
+  InputLabel,
+  Alert,
 } from "@mui/material";
 import {
   Heading,
-  MainDiv,
   Wrapper,
   MainButton,
+  LeftGrid,
 } from "../../styles/loginstylecomponent";
-import { useState } from "react";
-import { Alert } from "@mui/material";
-
-import InputLabel from "@mui/material/InputLabel";
 
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
-export default function Login() {
+export default function LoginForm() {
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
 
@@ -73,7 +72,7 @@ export default function Login() {
   };
 
   return (
-    <MainDiv>
+    <LeftGrid>
       <Heading>
         <h2>Welcome Back!</h2>
         <p>Welcome Back! please log in to access your account</p>
@@ -137,6 +136,6 @@ export default function Login() {
         </MainButton>
         <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
       </Wrapper>
-    </MainDiv>
+    </LeftGrid>
   );
 }
