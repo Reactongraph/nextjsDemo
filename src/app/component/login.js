@@ -1,27 +1,35 @@
 "use client";
 
-import { TextField } from "@mui/material";
 import {
-  H3,
+  Button,
+  Link,
+  FilledInput,
+  FormControl,
+  Checkbox,
+} from "@mui/material";
+import {
+  Heading,
   MainDiv,
   Wrapper,
   MainButton,
 } from "../../styles/loginstylecomponent";
-import { Paper } from "@mui/material";
 import { useState } from "react";
-import FormControl from "@mui/material/FormControl";
-import InputAdornment from "@mui/material/InputAdornment";
+import { Alert } from "@mui/material";
+
 import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+const isEmail = (email) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
 export default function Login() {
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
 
   const [showPassword, setShowPassword] = useState(false);
+
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [formValid, setFormValid] = useState();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -31,67 +39,104 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (emailError || !emailInput) {
+      setFormValid("Email is invalid. Please Re-Enter");
+      return;
+    }
+    if (passwordError || !passwordInput) {
+      setFormValid("Password is set to 5-20 Characters. Please Re-Enter");
+      return;
+    }
+    setFormValid(null);
     console.log(emailInput);
     console.log(passwordInput);
   };
 
+  const handleEmail = () => {
+    if (!isEmail(emailInput)) {
+      setEmailError(true);
+      return;
+    }
+    setEmailError(false);
+  };
+
+  const handlePassword = () => {
+    if (
+      !passwordInput ||
+      passwordInput.length < 5 ||
+      passwordInput.length > 20
+    ) {
+      setPasswordError(true);
+      return;
+    }
+    setPasswordError(false);
+  };
+
   return (
     <MainDiv>
-      <Paper>
-        <H3>
-          <h3>Welcome Back!</h3>
-          <p>Welcome Back! please log in to access your account</p>
-        </H3>
-        <Wrapper>
-          <InputLabel htmlFor="standard-adornment-password">
-            Email address*
-          </InputLabel>
-          <TextField
-            fullWidth
+      <Heading>
+        <h2>Welcome Back!</h2>
+        <p>Welcome Back! please log in to access your account</p>
+      </Heading>
+      <Wrapper>
+        <InputLabel htmlFor="standard-adornment-password">
+          Email address*
+        </InputLabel>
+        <FormControl sx={{ m: 1, width: "35ch" }} variant="filled">
+          <FilledInput
             required
             type="email"
+            id="standard-adornment-password"
             placeholder="Enter email address"
             variant="outlined"
             value={emailInput}
+            error={emailError}
+            onBlur={handleEmail}
             onChange={(event) => setEmailInput(event.target.value)}
-          ></TextField>
-          <br />
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
-            <InputLabel htmlFor="standard-adornment-password">
-              Password*
-            </InputLabel>
-            <Input
-              id="standard-adornment-password"
-              variant="outlined"
-              value={passwordInput}
-              onChange={(event) => setPasswordInput(event.target.value)}
-              required
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          <br />
-          <label>
-            <input type="checkbox" value="remember-me" /> Remember me
-          </label>
-          &nbsp;
-          <a href="#" underline="none">
-            Forgot Password?
-          </a>
-          <br />
-          <MainButton onClick={handleSubmit}>Login</MainButton>
-        </Wrapper>
-      </Paper>
+          ></FilledInput>
+        </FormControl>
+        <br />
+        <br />
+        <InputLabel htmlFor="standard-adornment-password">Password*</InputLabel>
+        <FormControl sx={{ m: 1, width: "26ch" }} variant="filled">
+          <FilledInput
+            style={{ width: "9.2cm" }}
+            value={passwordInput}
+            placeholder="Enter Password"
+            error={passwordError}
+            onBlur={handlePassword}
+            onChange={(event) => setPasswordInput(event.target.value)}
+            required
+            id="filled-adornment-password"
+            type={showPassword ? "text" : "password"}
+            endAdornment={
+              <Button
+                type="text"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                style={{ color: "black" }}
+              >
+                show
+              </Button>
+            }
+          />
+        </FormControl>
+        <InputLabel style={{ width: "5cm" }}>
+          <Checkbox defaultChecked size="small" />
+          Remember Me
+        </InputLabel>
+        <Link
+          href="/"
+          underline="none"
+          style={{ float: "right", marginTop: "-30px" }}
+        >
+          Forgot Password?
+        </Link>
+        <MainButton onClick={handleSubmit} variant="contained" fullWidth>
+          Login
+        </MainButton>
+        <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
+      </Wrapper>
     </MainDiv>
   );
 }
