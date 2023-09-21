@@ -45,7 +45,8 @@ export const LeftGrid = styled(Grid)`
 export const RightGrid = styled(Grid)`
 background: #4A2CF5;
   width: 60%;
-  background-image: "./images/Rectangle 3.svg";
+  background-image:  url("./images/Rectangle.svg");
+  position: relative;
 `;
 
 export const TopImage = styled.img`
@@ -73,14 +74,24 @@ export const BottomImage = styled.img`
   left: 887px;
 `;
 
-export const SideImage = styled.img`
-  width: 50px;
-  height: 50px;
-  color: white;
+export const LeftSideImage = styled.img`
+width: 200px;
+height: 100px;
+position:absolute;
+top:0;
+left:0;
+`;
+
+export const RightSideImage = styled.img`
+  width: 100px;
+  height: 100px;
+  position:absolute;
+  top:0;
+  right:0;
 `;
 
 export const MainGrid = styled(Grid)`
   width: 40%;
   font-size: 13px;
-  background-color: white;
+  background: #FFFFFF;
 `;
