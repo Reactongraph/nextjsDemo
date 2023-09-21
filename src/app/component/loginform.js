@@ -15,6 +15,8 @@ import {
   Wrapper,
   MainButton,
   LeftGrid,
+  MainGrid,
+  Paragraph,
 } from "../../styles/loginstylecomponent";
 
 const isEmail = (email) =>
@@ -72,70 +74,73 @@ export default function LoginForm() {
   };
 
   return (
-    <LeftGrid>
-      <Heading>
-        <h2>Welcome Back!</h2>
-        <p>Welcome Back! please log in to access your account</p>
-      </Heading>
-      <Wrapper>
-        <InputLabel htmlFor="standard-adornment-password">
-          Email address*
-        </InputLabel>
-        <FormControl sx={{ m: 1, width: "35ch" }} variant="filled">
-          <FilledInput
-            required
-            type="email"
-            id="standard-adornment-password"
-            placeholder="Enter email address"
-            variant="outlined"
-            value={emailInput}
-            error={emailError}
-            onBlur={handleEmail}
-            onChange={(event) => setEmailInput(event.target.value)}
-          ></FilledInput>
-        </FormControl>
-        <br />
-        <br />
-        <InputLabel htmlFor="standard-adornment-password">Password*</InputLabel>
-        <FormControl sx={{ m: 1, width: "26ch" }} variant="filled">
-          <FilledInput
-            style={{ width: "9.2cm" }}
-            value={passwordInput}
-            placeholder="Enter Password"
-            error={passwordError}
-            onBlur={handlePassword}
-            onChange={(event) => setPasswordInput(event.target.value)}
-            required
-            id="filled-adornment-password"
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <Button
-                type="text"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                style={{ color: "black" }}
-              >
-                show
-              </Button>
-            }
-          />
-        </FormControl>
-        <InputLabel style={{ width: "5cm" }}>
-          <Checkbox defaultChecked size="small" />
-          Remember Me
-        </InputLabel>
-        <Link
-          href="/"
-          underline="none"
-          style={{ float: "right", marginTop: "-30px" }}
-        >
-          Forgot Password?
-        </Link>
-        <MainButton onClick={handleSubmit} variant="contained" fullWidth>
-          Login
-        </MainButton>
-        <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
-      </Wrapper>
-    </LeftGrid>
+    <MainGrid>
+      <LeftGrid>
+        <Heading>
+          <h2>Welcome Back!</h2>
+          <Paragraph>
+            Welcome Back! please log in to access <br /> your account
+          </Paragraph>
+        </Heading>
+        <Wrapper>
+          <InputLabel htmlFor="standard-adornment-password" >
+            Email address*
+          </InputLabel>
+          <FormControl sx={{ m: 1, width: "31ch" }} variant="filled">
+            <FilledInput
+              required
+              type="email"
+              id="standard-adornment-password"
+              placeholder="Enter email address"
+              variant="outlined"
+              value={emailInput}
+              error={emailError}
+              onBlur={handleEmail}
+              onChange={(event) => setEmailInput(event.target.value)}
+            ></FilledInput>
+          </FormControl>
+          <InputLabel htmlFor="standard-adornment-password">
+            Password*
+          </InputLabel>
+          <FormControl sx={{ m: 1, width: "31ch" }} variant="filled">
+            <FilledInput
+              value={passwordInput}
+              placeholder="Enter Password"
+              error={passwordError}
+              onBlur={handlePassword}
+              onChange={(event) => setPasswordInput(event.target.value)}
+              required
+              id="filled-adornment-password"
+              type={showPassword ? "text" : "password"}
+              endAdornment={
+                <Button
+                  type="text"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  style={{ color: "black", fontSize:"10px" }}
+                >
+                  show
+                </Button>
+              }
+            />
+          </FormControl>
+          <InputLabel style={{ width: "5cm", fontSize: "12px" }}>
+            <Checkbox defaultChecked size="x-small" />
+            Remember Me
+          </InputLabel>
+          <Link
+            href="/"
+            underline="none"
+            style={{ float: "right", marginTop: "-25px", fontSize: "12px" }}
+          >
+            Forgot Password?
+          </Link>
+          <MainButton onClick={handleSubmit} variant="contained" fullWidth>
+            Login
+          </MainButton>
+          <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
+        </Wrapper>
+      </LeftGrid>
+    </MainGrid>
   );
 }
