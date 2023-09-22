@@ -9,6 +9,7 @@ import {
   Checkbox,
   InputLabel,
   Alert,
+  TextField,
 } from "@mui/material";
 import {
   Heading,
@@ -17,7 +18,10 @@ import {
   LeftGrid,
   MainGrid,
   Paragraph,
-} from "../../styles/loginstylecomponent";
+  Labels,
+  EmailFieldGrid,
+  PasswordFieldGrid,
+} from "../../styles/loginformstyle";
 
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
@@ -79,59 +83,87 @@ export default function LoginForm() {
         <Heading>
           <h2>Welcome Back!</h2>
           <Paragraph>
-            Welcome Back! please log in to access <br /> your account
+            Welcome Back! please log in to access your account
           </Paragraph>
         </Heading>
         <Wrapper>
-          <InputLabel htmlFor="standard-adornment-password" >
-            Email address*
-          </InputLabel>
-          <FormControl sx={{ m: 1, width: "31ch" }} variant="filled">
-            <FilledInput
-              required
-              type="email"
-              id="standard-adornment-password"
-              placeholder="Enter email address"
-              variant="outlined"
-              value={emailInput}
-              error={emailError}
-              onBlur={handleEmail}
-              onChange={(event) => setEmailInput(event.target.value)}
-            ></FilledInput>
+          <Labels style = {{top:"40px"}} htmlFor="standard-adornment-password">Email address*</Labels>
+          <FormControl sx={{ m: 1, width: "31ch" }}>
+            <EmailFieldGrid>
+              <TextField
+              style={{ width: "426px",
+                height: "69px"}}
+                required
+                type="email"
+                id="standard-adornment-password"
+                placeholder="Enter email address"
+                variant="outlined"
+                value={emailInput}
+                error={emailError}
+                onBlur={handleEmail}
+                onChange={(event) => setEmailInput(event.target.value)}
+              ></TextField>
+            </EmailFieldGrid>
           </FormControl>
-          <InputLabel htmlFor="standard-adornment-password">
+          <Labels
+            style={{ top:"10px" }}
+            htmlFor="standard-adornment-password"
+          >
             Password*
-          </InputLabel>
-          <FormControl sx={{ m: 1, width: "31ch" }} variant="filled">
-            <FilledInput
-              value={passwordInput}
-              placeholder="Enter Password"
-              error={passwordError}
-              onBlur={handlePassword}
-              onChange={(event) => setPasswordInput(event.target.value)}
-              required
-              id="filled-adornment-password"
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <Button
-                  type="text"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  style={{ color: "black", fontSize:"10px" }}
-                >
-                  show
-                </Button>
-              }
-            />
+          </Labels>
+          <FormControl sx={{ m: 1, width: "31ch" }} variant="outlined">
+            <PasswordFieldGrid>
+              <FilledInput
+                value={passwordInput}
+                placeholder="Enter Password"
+                error={passwordError}
+                onBlur={handlePassword}
+                onChange={(event) => setPasswordInput(event.target.value)}
+                required
+                id="filled-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <Button
+                    type="text"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    style={{ color: "black", fontSize: "10px" }}
+                  >
+                    show
+                  </Button>
+                }
+              />
+            </PasswordFieldGrid>
           </FormControl>
-          <InputLabel style={{ width: "5cm", fontSize: "12px" }}>
+          <InputLabel
+            style={{
+              width: "5cm",
+              fontSize: "12px",
+              fontFamily: "Plus Jakarta Sans",
+              fontSize: "16px",
+              fontWeight: "600",
+              lineHeight: "20px",
+              letterSpacing: "0em",
+              textAlign: "left",
+            }}
+          >
             <Checkbox defaultChecked size="x-small" />
             Remember Me
           </InputLabel>
           <Link
             href="/"
             underline="none"
-            style={{ float: "right", marginTop: "-25px", fontSize: "12px" }}
+            style={{
+              float: "right",
+              marginTop: "-25px",
+              fontFamily: "Plus Jakarta Sans",
+              fontSize: "16px",
+              fontWeight: "600",
+              lineHeight: "20px",
+              letterSpacing: "0em",
+              textAlign: "left",
+              color: "#4A2CF5",
+            }}
           >
             Forgot Password?
           </Link>
