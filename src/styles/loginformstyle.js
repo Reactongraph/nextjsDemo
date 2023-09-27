@@ -1,87 +1,103 @@
-import { Button, Grid, InputLabel } from "@mui/material";
+import { Button, Grid, InputLabel, Link, TextField } from "@mui/material";
 import styled from "styled-components";
 
 export const MainGrid = styled(Grid)`
-  width: 40%;
-  font-size: 13px;
+  width: 30%;
+  margin: auto;
   background: #ffffff;
+  justify-content: center;
+    display: flex;
+
+    @media screen and (max-width: 600px) {
+  
+      width: 100%;
+      height: 100vh;
+      margin-top: 30%;
+       }
+  
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+ 
+      width: 100%;
+      height: 100vh;
+      margin-top: 30%;
+      padding-left: 15px;
+       }
+  
+    
 `;
 
 export const LeftGrid = styled(Grid)`
-  margin-left: 100px;
-  margin-top: 220px;
-  background-color: white;
-  width: 426px;
-  height: 563px;
-  margin-top: 289px;
-  margin-left: 203px;
-  border-radius: 6px;
 
-  @media screen and (max-width: 400px) {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 50px;
-  }
-
-  @media screen and (min-width: 400px) and (max-width: 700px) {
-    width: 400px;
-    margin-left: 12px;
-  }
 `;
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.p` 
 color: #8692A6;
-width: 411px
-height: 56px
-top: 308px
-left: 203px
 font-family: Plus Jakarta Sans;
-font-size: 18px;
+font-size: 24px;
 font-weight: 400;
 line-height: 28px;
 letter-spacing: 0em;
-text-align: left;
-margin-top: 20px;
 
-@media screen and (max-width: 400px) {
+padding-top: 10px;
 
-  font-size: 10px;
-  margin-top: 1px;
-  text-align: center;
+@media screen and (max-width: 600px) {
+
+  font-size: 14px;
 }
-@media screen and (min-width: 400px) and (max-width: 700px){
-  
-    color: black;
-  
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  font-size: 16px;
 }
+@media screen and (min-width: 900px) and (max-width: 1000px) {
+  font-size: 18px;
+   }
+
 `;
 
 export const Wrapper = styled(Grid)`
-  margin-top: 10px;
-  
-  
+
+width:100%;
 `;
 
 export const Labels = styled(InputLabel)`
-  width: 116px;
-  height: 20px;
+
   font-family: Plus Jakarta Sans;
-  font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0em;
-  text-align: left;
+  padding-bottom: 20px;
   color: #58595b;
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
 
-  @media screen and (max-width: 400px) {
-    font-size: 12px;
-    margin-left: 40px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1000px) {
+    font-size: 16px;
+  }
+`;
+
+export const TextField1 = styled(TextField)`
+  width: 100%;
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 900px) {
+    width: 350px;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1000px) {
+    width: 600px;
   }
 `;
 
 export const EmailFieldGrid = styled(Grid)`
-  width: 426px;
-  height: 64px;
+width: 100%;
   margin-top: 43px;
   border-radius: 6px;
   border: 1px;
@@ -89,48 +105,88 @@ export const EmailFieldGrid = styled(Grid)`
   color: #58595b;
   border: 1px solid #58595b;
 
-  @media screen and (max-width: 400px) {
-  width: 300px;
-  margin-left: -43px;
-  height: 56px;
+  @media screen and (max-width: 600px) {
+    width: 300px;
+    height: 56px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 900px) {
+    width: 350px;
+    height: 57px;
+  }
+  @media screen and (min-width: 900px) and (max-width: 1000px) {
+    width: 600px;
+    height: 57px;
   }
 `;
 
 export const PasswordFieldGrid = styled(Grid)`
-  width: 426px;
-  height: 64px;
+  width: 100%;
+
   margin-top: 13px;
   border-radius: 6px;
   border: 1px;
   opacity: 0.7px;
   border: 1px solid #58595b;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     width: 300px;
-    margin-left: -43px;
     height: 56px;
-    }
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px) {
+    width: 350px;
+    height: 57px;
+  }
+  @media screen and (min-width: 900px) and (max-width: 1000px) {
+    width: 600px;
+    height: 57px;
+  }
 `;
+
+export const ShowButton = styled(Button)`
+color: black;
+padding-left: 100px;
+
+ @media screen and (max-width: 600px) {
+  font-size: 10px;
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  font-size: 12px;
+
+}
+
+@media screen and (min-width: 900px) and (max-width: 1000px) {
+  font-size: 12px;
+
+}
+
+`;
+
+
 export const MainButton = styled(Button)`
   background: #4a2cf5;
-  width: 426px;
-  height: 64px;
   border-radius: 6px;
-  margin-top: 26px;
-  margin-left: 10px;
+  padding: 20px;
+    margin: 5px;
+    width: 100%;
 
-  @media screen and (max-width: 400px) {
-    width: 300px;
-    margin-left: -10px;
-    height: 56px;
-    }
+  @media screen and (max-width: 600px) {
+    width: 310px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px) {
+    width: 350px;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1000px) {
+    width: 600px;
+  }
+ 
 `;
 
 export const Heading = styled(Grid)`
-width: 230px
-height: 38px
-top: 259px
-left: 203px
+width: 100%;
 font-family: Plus Jakarta Sans;
 font-size: 30px;
 font-weight: 700;
@@ -138,9 +194,42 @@ line-height: 38px;
 letter-spacing: 0em;
 text-align: left;
 color: #000000;
+`;
 
-@media screen and (max-width: 400px) {
-  font-size: 12px;
-  text-align: center;
-}
+export const CheckField = styled(InputLabel)`
+  fontfamily: Plus Jakarta Sans;
+  fontsize: 16px;
+  fontweight: 600;
+  lineheight: 20px;
+  letterspacing: 0em;
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px){
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1000px){
+    font-size: 18px;
+  }
+`;
+
+export const LinkField = styled(Link)`
+  font-family: Plus Jakarta Sans;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  color: #4A2CF5";
+
+  @media screen and (max-width: 600px) {
+
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px){
+    font-size: 16px;
+  }
+
 `;

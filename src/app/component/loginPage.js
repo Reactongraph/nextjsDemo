@@ -1,6 +1,6 @@
 "use client";
 
-import { MainDiv } from "@/styles/loginstylecomponent";
+import { MainDiv } from "@/styles/loginsidebarstyle";
 import LoginForm from "./loginform";
 import LoginSidebar from "./loginsidebar";
 

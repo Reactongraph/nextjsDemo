@@ -2,14 +2,11 @@
 
 import { useState } from "react";
 import {
-  Button,
-  Link,
   FilledInput,
   FormControl,
   Checkbox,
-  InputLabel,
   Alert,
-  TextField,
+  Grid,
 } from "@mui/material";
 import {
   Heading,
@@ -21,6 +18,10 @@ import {
   Labels,
   EmailFieldGrid,
   PasswordFieldGrid,
+  CheckField,
+  LinkField,
+  TextField1,
+  ShowButton,
 } from "../../styles/loginformstyle";
 
 const isEmail = (email) =>
@@ -87,12 +88,12 @@ export default function LoginForm() {
           </Paragraph>
         </Heading>
         <Wrapper>
-          <Labels style = {{top:"40px"}} htmlFor="standard-adornment-password">Email address*</Labels>
-          <FormControl sx={{ m: 1, width: "31ch" }}>
+          <Labels style={{ top: "40px" }} htmlFor="standard-adornment-password">
+            Email address*
+          </Labels>
+          <FormControl sx={{ width: "100%" }}>
             <EmailFieldGrid>
-              <TextField
-              style={{ width: "426px",
-                height: "69px"}}
+              <TextField1
                 required
                 type="email"
                 id="standard-adornment-password"
@@ -102,16 +103,13 @@ export default function LoginForm() {
                 error={emailError}
                 onBlur={handleEmail}
                 onChange={(event) => setEmailInput(event.target.value)}
-              ></TextField>
+              ></TextField1>
             </EmailFieldGrid>
           </FormControl>
-          <Labels
-            style={{ top:"10px" }}
-            htmlFor="standard-adornment-password"
-          >
+          <Labels style={{ top: "10px" }} htmlFor="standard-adornment-password">
             Password*
           </Labels>
-          <FormControl sx={{ m: 1, width: "31ch" }} variant="outlined">
+          <FormControl sx={{ width: "100%" }} variant="outlined">
             <PasswordFieldGrid>
               <FilledInput
                 value={passwordInput}
@@ -123,50 +121,28 @@ export default function LoginForm() {
                 id="filled-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
-                  <Button
+                  <ShowButton
                     type="text"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
-                    style={{ color: "black", fontSize: "10px" }}
                   >
                     show
-                  </Button>
+                  </ShowButton>
                 }
               />
             </PasswordFieldGrid>
           </FormControl>
-          <InputLabel
-            style={{
-              width: "5cm",
-              fontSize: "12px",
-              fontFamily: "Plus Jakarta Sans",
-              fontSize: "16px",
-              fontWeight: "600",
-              lineHeight: "20px",
-              letterSpacing: "0em",
-              textAlign: "left",
-            }}
-          >
-            <Checkbox defaultChecked size="x-small" />
+          <Grid style={{width: "100%", display: "flex",  padding: "20px",
+        justifyContent: "space-between",
+        alignItems: "center"}}>
+          <CheckField>
+            <Checkbox defaultChecked size="small" />
             Remember Me
-          </InputLabel>
-          <Link
-            href="/"
-            underline="none"
-            style={{
-              float: "right",
-              marginTop: "-25px",
-              fontFamily: "Plus Jakarta Sans",
-              fontSize: "16px",
-              fontWeight: "600",
-              lineHeight: "20px",
-              letterSpacing: "0em",
-              textAlign: "left",
-              color: "#4A2CF5",
-            }}
-          >
+          </CheckField>
+          <LinkField href="/" underline="none">
             Forgot Password?
-          </Link>
+          </LinkField>
+          </Grid>
           <MainButton onClick={handleSubmit} variant="contained" fullWidth>
             Login
           </MainButton>
