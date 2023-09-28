@@ -7,6 +7,7 @@ import {
   LeftSideImage,
   HeadingGrid,
 } from "@/styles/loginsidebarstyle";
+import Image from "next/image";
 
 export default function LoginSidebar() {
   return (
@@ -14,7 +15,7 @@ export default function LoginSidebar() {
       <LeftSideImage src="./images/Looper1.svg" />
       <RightSideImage src="./images/Looper2.svg" />
       <HeadingGrid>
-        <img src="./images/AlphaSearch.svg" />
+        <Image src="./images/AlphaSearch.svg" width={300} height={100}/>
         <LeftHeading>
           Using Data to bring{" "}
           <span style={{ color: "#FAFF14" }}>transparency</span> <br />

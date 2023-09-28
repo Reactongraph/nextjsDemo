@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  FilledInput,
-  FormControl,
-  Checkbox,
-  Alert,
-  Grid,
-} from "@mui/material";
+import { FormControl, Checkbox, Alert } from "@mui/material";
 import {
   Heading,
   Wrapper,
@@ -22,6 +16,8 @@ import {
   LinkField,
   TextField1,
   ShowButton,
+  LinkGrid,
+  TextField2,
 } from "../../styles/loginformstyle";
 
 const isEmail = (email) =>
@@ -88,9 +84,7 @@ export default function LoginForm() {
           </Paragraph>
         </Heading>
         <Wrapper>
-          <Labels style={{ top: "40px" }} htmlFor="standard-adornment-password">
-            Email address*
-          </Labels>
+          <Labels htmlFor="standard-adornment-password">Email address*</Labels>
           <FormControl sx={{ width: "100%" }}>
             <EmailFieldGrid>
               <TextField1
@@ -106,12 +100,10 @@ export default function LoginForm() {
               ></TextField1>
             </EmailFieldGrid>
           </FormControl>
-          <Labels style={{ top: "10px" }} htmlFor="standard-adornment-password">
-            Password*
-          </Labels>
+          <Labels htmlFor="standard-adornment-password">Password*</Labels>
           <FormControl sx={{ width: "100%" }} variant="outlined">
             <PasswordFieldGrid>
-              <FilledInput
+              <TextField2
                 value={passwordInput}
                 placeholder="Enter Password"
                 error={passwordError}
@@ -132,17 +124,15 @@ export default function LoginForm() {
               />
             </PasswordFieldGrid>
           </FormControl>
-          <Grid style={{width: "100%", display: "flex",  padding: "20px",
-        justifyContent: "space-between",
-        alignItems: "center"}}>
-          <CheckField>
-            <Checkbox defaultChecked size="small" />
-            Remember Me
-          </CheckField>
-          <LinkField href="/" underline="none">
-            Forgot Password?
-          </LinkField>
-          </Grid>
+          <LinkGrid>
+            <CheckField>
+              <Checkbox />
+              Remember Me
+            </CheckField>
+            <LinkField href="/" underline="none">
+              Forgot Password?
+            </LinkField>
+          </LinkGrid>
           <MainButton onClick={handleSubmit} variant="contained" fullWidth>
             Login
           </MainButton>
