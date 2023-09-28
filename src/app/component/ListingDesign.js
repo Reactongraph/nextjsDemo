@@ -1,93 +1,94 @@
 "use client";
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import * as React from "react";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Grid,
+  Container,
+  Avatar,
+  Tooltip,
+  List,
+  ListItem,
+  SearchIcon,
+  SearchIconWrapper,
+  StyledInputBase,
+  Button,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import Image from "next/image";
+import {H3} from '../listing/Listing';
+import { Search } from "@mui/icons-material";
 
 export default function ListingDesign() {
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-
   return (
-    <AppBar position="static" style={{backgroundColor: "#FFF"}}>
+    <Grid style= {{backgroundColor: "#FFF"}}>    
+      <AppBar position="static" style= {{backgroundColor: "#FFF", border: "1px grey"}} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <img src="./images/AlphaSearch.svg" />
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <Menu
-              id="menu-appbar"
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-             
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              <Button>Search</Button>
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          
+          <Image src="./images/AlphaSearch.svg" width={10} height={0}/>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <List  style= {{color: "black", display: "flex"}}>
+          <ListItem>
+            Search
+          </ListItem>
+          <ListItem>
+            Lists
+          </ListItem>
+          <ListItem>
+            More
+          </ListItem>
+      </List>
+      <Search style= {{color: "black"}}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="./images/pictures.svg"/>
+              <IconButton sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
+    <Grid sx = {{ display:"flex", height: "auto"}}>
+        <H3>Find what you're looking for with 
+          <p style = {{color: "rgba(74, 44, 245, 1)"}}>Alphasearch.</p>
+          </H3>
+          <Image src="./images/ALphaSearchsymbol1.svg" width = {170} height={150}></Image>
+      </Grid>
+      <Grid style={{width: "30%", height: "50%", 
+      border: "1px solid grey", float: "left", backgroundColor: "white", padding: "10px", margin: "40px"}}>
+        <Grid>
+          <h4>Filter</h4>
+          <Button>Clear All</Button>
+          <h4>Terms</h4>
+          <InputLabel>Include these terms</InputLabel>
+          <TextField></TextField>
+          <InputLabel>Exclude these terms</InputLabel>
+          <TextField></TextField>
+          <h4>Operating Model</h4>
+          <h5>Industry</h5>
+          <InputLabel>Include</InputLabel>
+          <TextField></TextField>
+          <InputLabel>Exclude</InputLabel>
+          <TextField></TextField>
+        </Grid>
+      </Grid>
+    </Grid>
+
   );
 }
-
-
-
-
-  
