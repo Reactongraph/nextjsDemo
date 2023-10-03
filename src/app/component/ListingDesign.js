@@ -11,39 +11,60 @@ import {
   Avatar,
   Tooltip,
   List,
-  ListItem,
   SearchIcon,
   SearchIconWrapper,
   StyledInputBase,
-  Button,
+  Paper,
+  InputBase,
+  FormControl,
   InputLabel,
-  TextField,
+  Select,
 } from "@mui/material";
 import Image from "next/image";
-import {H3} from '../listing/Listing';
+import {H3, Paragraph, HeadingGrid, ImageGrid} from '../listing/ListingStyle';
 import { Search } from "@mui/icons-material";
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 
 export default function ListingDesign() {
 
   return (
-    <Grid style= {{backgroundColor: "#FFF"}}>    
+    <Grid>    
       <AppBar position="static" style= {{backgroundColor: "#FFF", border: "1px grey"}} >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Image src="./images/AlphaSearch.svg" width={10} height={0}/>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+        <Toolbar>
+          <Image src="/images/AlphaSearch.svg" width={50} height={50}/>
+      
           <List  style= {{color: "black", display: "flex"}}>
-          <ListItem>
-            Search
-          </ListItem>
-          <ListItem>
-            Lists
-          </ListItem>
-          <ListItem>
-            More
-          </ListItem>
+            <Grid style = {{
+                  color: "rgba(74, 44, 245, 1)",
+                  fontFamily:"Plus Jakarta Sans",
+                  height: "auto", 
+                  width: "70px",
+                  textAlign:"center",
+                  paddingTop: "20px",
+                  backgroundColor: "blueviolet"}}>
+          <InputLabel id="demo-simple-select-standard-label">Search</InputLabel>
+          </Grid>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 70}}>
+        <InputLabel id="demo-simple-select-standard-label">Lists</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          label="Lists"
+        ></Select>
+        </FormControl>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 70}}>
+        <InputLabel id="demo-simple-select-standard-label">More</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          label="More"
+        ></Select>
+        </FormControl>
+          
       </List>
-      <Search style= {{color: "black"}}>
+      <Paper sx={{ p: '2px 4px', display: 'flex', alignItems: 'center',width: "40%", height: "40%", margin: "auto 2% auto auto"}}>
+      <Search style= {{color: "rgba(71, 100, 246, 1)"}}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -52,8 +73,11 @@ export default function ListingDesign() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          </Box>
-
+          <InputBase
+        sx={{ ml: 1, flex: 1 }}
+        placeholder="Search a term, industry, or a specific company"/>
+          <QueryBuilderIcon style={{color: "grey"}}/>
+          </Paper>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton sx={{ p: 0 }}>
@@ -64,30 +88,18 @@ export default function ListingDesign() {
         </Toolbar>
       </Container>
     </AppBar>
-    <Grid sx = {{ display:"flex", height: "auto"}}>
+    <HeadingGrid>
         <H3>Find what you're looking for with 
-          <p style = {{color: "rgba(74, 44, 245, 1)"}}>Alphasearch.</p>
+          <Paragraph>Alphasearch.</Paragraph>
           </H3>
-          <Image src="./images/ALphaSearchsymbol1.svg" width = {170} height={150}></Image>
-      </Grid>
-      <Grid style={{width: "30%", height: "50%", 
-      border: "1px solid grey", float: "left", backgroundColor: "white", padding: "10px", margin: "40px"}}>
-        <Grid>
-          <h4>Filter</h4>
-          <Button>Clear All</Button>
-          <h4>Terms</h4>
-          <InputLabel>Include these terms</InputLabel>
-          <TextField></TextField>
-          <InputLabel>Exclude these terms</InputLabel>
-          <TextField></TextField>
-          <h4>Operating Model</h4>
-          <h5>Industry</h5>
-          <InputLabel>Include</InputLabel>
-          <TextField></TextField>
-          <InputLabel>Exclude</InputLabel>
-          <TextField></TextField>
-        </Grid>
-      </Grid>
+          <ImageGrid>
+          <Image src="./images/ALphaSearchsymbol2.svg" width = {100} height={80}
+          style={{marginRight: "-37%"}} />
+          <Image src="./images/ALphaSearchsymbol1.svg" width = {100} height={80} 
+          />
+          </ImageGrid>
+         
+      </HeadingGrid>
     </Grid>
 
   );
