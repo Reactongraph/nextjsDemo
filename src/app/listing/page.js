@@ -1,16 +1,20 @@
 "use client";
 
 import React from 'react';
-import { Grid } from '@mui/material';
 import ListingDesign from '../component/ListingDesign';
 import ListingSidebar from '../component/ListingSidebar.js';
+import ListingContent from '../component/ListingContent';
+import { ListingPageMain, ContentArea } from './ListingStyle';
 
 function page() {
   return (
-    <Grid style={{backgroundColor:"#FFF", height: "100vh"}}>
+    <ListingPageMain>
       <ListingDesign/>
+      <ContentArea>
       <ListingSidebar/>
-    </Grid>
+      <ListingContent/>
+      </ContentArea>
+    </ListingPageMain>
   )
 }
 
