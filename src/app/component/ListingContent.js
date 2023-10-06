@@ -17,11 +17,8 @@ import {
   Description,
   Li,
   ContentHeadGrid,
-  H4,
-  FilterHideGrid,
 } from "../listing/ListingStyle";
 import Image from "next/image";
-import ToggleSidebar from "./ToggleSidebar.js";
 
 export default function ListingContent() {
   const data = [
@@ -91,10 +88,6 @@ export default function ListingContent() {
     <ListingContentGrid>
       <SidebarHeadingGrid>
         <h3>Search result: 30 Companies</h3>
-        <FilterHideGrid>
-          <H4>Filter</H4>
-          <ToggleSidebar />
-        </FilterHideGrid>
       </SidebarHeadingGrid>
       <Grid>
         {data.map((content) => (

@@ -32,52 +32,76 @@ import {
   ClockGrid,
   NavSideGrid,
 } from "../listing/ListingStyle";
-import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import Toggle from "./Toggle.js";
+import Headingbar from "./Headingbar";
 
 export default function ListingDesign() {
   return (
     <>
       <AppBarMain>
         <ToolbarStyle>
-          <Image
-            src="/images/ALphaSearch 1.png"
-            alt="Logo"
-            width={188}
-            height={35}
-          />
-          <Toggle />
-          <NavSideGrid>
-            <Grid>
-              <ListStyle>
-                <SearchButtonGrid>
-                  <InputSearchLabel id="demo-simple-select-standard-label">
-                    Search
-                  </InputSearchLabel>
-                </SearchButtonGrid>
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
-                  <InputLabel id="demo-simple-select-standard-label">
-                    Lists
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    label="Lists"
-                  ></Select>
-                </FormControl>
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
-                  <InputLabel id="demo-simple-select-standard-label">
-                    More
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    label="More"
-                  ></Select>
-                </FormControl>
-              </ListStyle>
+          <Grid
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Grid
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Grid>
+                <Image
+                  src="/images/ALphaSearch 1.png"
+                  alt="Logo"
+                  width={188}
+                  height={35}
+                />
+              </Grid>
+
+              <Grid
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Toggle />
+                <NavSideGrid>
+                  <ListStyle>
+                    <SearchButtonGrid>
+                      <InputSearchLabel id="demo-simple-select-standard-label">
+                        Search
+                      </InputSearchLabel>
+                    </SearchButtonGrid>
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
+                      <InputLabel id="demo-simple-select-standard-label">
+                        Lists
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="Lists"
+                      ></Select>
+                    </FormControl>
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
+                      <InputLabel id="demo-simple-select-standard-label">
+                        More
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="More"
+                      ></Select>
+                    </FormControl>
+                  </ListStyle>
+                </NavSideGrid>
+              </Grid>
             </Grid>
-            <Grid style={{ display: "flex", alignItems: "center" }}>
+
+            <NavSideGrid>
               <PaperSearch>
                 <SearchStyle>
                   <SearchIconWrapper>
@@ -99,6 +123,7 @@ export default function ListingDesign() {
                   height={20}
                 ></Image>
               </PaperSearch>
+
               <Box>
                 <Tooltip title="Open settings">
                   <IconButton>
@@ -106,30 +131,11 @@ export default function ListingDesign() {
                   </IconButton>
                 </Tooltip>
               </Box>
-            </Grid>
-          </NavSideGrid>
+            </NavSideGrid>
+          </Grid>
         </ToolbarStyle>
       </AppBarMain>
-      <HeadingGrid>
-        <H3>
-          Find what you're looking for with
-          <Paragraph>Alphasearch.</Paragraph>
-        </H3>
-        <ImageGrid>
-          <Image1
-            src="./images/ALphaSearchsymbol2.svg"
-            alt="alpha image"
-            width={100}
-            height={80}
-          />
-          <Image
-            src="./images/ALphaSearchsymbol1.svg"
-            alt="alpha image"
-            width={100}
-            height={80}
-          />
-        </ImageGrid>
-      </HeadingGrid>
+      <Headingbar />
     </>
   );
 }

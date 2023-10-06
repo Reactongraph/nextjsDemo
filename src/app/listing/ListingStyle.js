@@ -9,6 +9,7 @@ import {
   Link,
   Button,
   ToggleButton,
+  Slider,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import styled from "styled-components";
@@ -25,8 +26,7 @@ export const AppBarMain = styled(AppBar)`
 `;
 
 export const ToolbarStyle = styled(Toolbar)`
-  margin-left: 2%;
-  height: 64px;
+  margin: 0px 2%;
 
   @media screen and (max-width: 900px) {
     justify-content: space-between;
@@ -35,7 +35,7 @@ export const ToolbarStyle = styled(Toolbar)`
 
 export const NavSideGrid = styled(Grid)`
   display: flex;
-
+  align-items: center;
   @media screen and (max-width: 900px) {
     display: none;
   }
@@ -43,7 +43,6 @@ export const NavSideGrid = styled(Grid)`
 export const ListStyle = styled(List)`
   color: black;
   display: flex;
-  margin-left: 3%;
 `;
 
 export const SearchButtonGrid = styled(Grid)`
@@ -56,6 +55,14 @@ export const SearchButtonGrid = styled(Grid)`
   margin-left: 25px;
 `;
 
+export const SideSearchButtonGrid = styled(Grid)`
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  background-color: rgba(74, 44, 245, 0.19);
+  border-bottom: 2px solid rgba(74, 44, 245, 1);
+`;
+
 export const InputSearchLabel = styled(InputLabel)`
   color: rgba(74, 44, 245, 1);
 `;
@@ -64,7 +71,7 @@ export const PaperSearch = styled(Paper)`
   padding: 2px 4px;
   display: flex;
   align-items: center;
-  width: 50%;
+
   height: 40%;
   margin: auto 2% auto auto;
 
@@ -113,6 +120,12 @@ export const HeadingGrid = styled(Grid)`
   justify-content: space-between;
 `;
 
+export const DrawerHeader = styled(Grid)`
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+`;
+
 export const Paragraph = styled.p`
   color: rgba(74, 44, 245, 1);
   font-size: 29px;
@@ -138,6 +151,17 @@ export const ImageGrid = styled(Grid)`
 
 export const Image1 = styled(Image)`
   margin-right: -37%;
+`;
+
+export const ModalGrid = styled(Grid)`
+  display: none;
+
+  @media screen and (max-width: 900) {
+    display: contents;
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+  }
 `;
 
 export const ListingSidebarMain = styled(Grid)`
@@ -167,6 +191,15 @@ export const SidebarHeadingGrid = styled(Grid)`
 
 export const H4 = styled.h4`
   padding: 2%;
+
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+  }
+`;
+export const FilterButton = styled(Button)`
+  padding: 2%;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 700;
 
   @media screen and (max-width: 900px) {
     font-size: 14px;
@@ -216,6 +249,22 @@ export const TextFieldStyle = styled(TextField)`
 export const ListingContentGrid = styled(Grid)`
   width: 70%;
   margin-right: 4px;
+`;
+
+export const TextGrid = styled(Grid)`
+  display: flex;
+`;
+
+export const SliderStyle = styled(Slider)`
+  color: rgba(74, 44, 245, 1);
+  width: 92%;
+  margin: auto 15px;
+`;
+
+export const FilterBottomGrid = styled(Grid)`
+  display: flex;
+  justify-content: space-between;
+  marginbottom: 34px;
 `;
 
 export const FilterHideGrid = styled(Grid)`

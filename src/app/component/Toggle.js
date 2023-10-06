@@ -1,11 +1,40 @@
 "use client";
 
 import * as React from "react";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { ToggleStyle, ToggleStyleGrid } from "../listing/ListingStyle";
+
+import {
+  Grid,
+  Avatar,
+  Drawer,
+  IconButton,
+  Divider,
+  FormControl,
+  InputLabel,
+  Select,
+  ToggleButtonGroup,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+import {
+  InputSearchLabel,
+  SideSearchButtonGrid,
+  ToggleStyle,
+  ToggleStyleGrid,
+  DrawerHeader,
+} from "../listing/ListingStyle";
+
 export default function Toggle() {
   const [view, setView] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -16,10 +45,66 @@ export default function Toggle() {
           exclusive
           onClick={() => setView(!view)}
         >
-          <ToggleStyle value="list" aria-label="list">
-            <ViewListIcon />
+          <ToggleStyle
+            value="list"
+            aria-label="list"
+            onClick={handleDrawerOpen}
+          >
+            <MenuIcon />
           </ToggleStyle>
         </ToggleButtonGroup>
+        <Drawer
+          sx={{
+            width: "240",
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: "240",
+            },
+          }}
+          variant="persistent"
+          anchor="right"
+          open={open}
+        >
+          <>
+            <DrawerHeader>
+              <IconButton onClick={handleDrawerClose}>
+                <ChevronRightIcon />
+              </IconButton>
+              <IconButton>
+                <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
+              </IconButton>
+            </DrawerHeader>
+            <Divider />
+
+            <Grid style={{ display: "grid", margin: "50px" }}>
+              <SideSearchButtonGrid>
+                <InputSearchLabel id="demo-simple-select-standard-label">
+                  Search
+                </InputSearchLabel>
+              </SideSearchButtonGrid>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
+                <InputLabel id="demo-simple-select-standard-label">
+                  Lists
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  label="Lists"
+                ></Select>
+              </FormControl>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
+                <InputLabel id="demo-simple-select-standard-label">
+                  More
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  label="More"
+                ></Select>
+              </FormControl>
+            </Grid>
+          </>
+        </Drawer>
       </ToggleStyleGrid>
     </>
   );
