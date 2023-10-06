@@ -13,11 +13,13 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.11",
     "@mui/material": "^5.14.11",
+    "@zeit/next-css": "^1.0.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "reactstrap": "^9.2.0",
     "styled-components": "^6.0.8"
   }
 }

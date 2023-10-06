@@ -17,8 +17,11 @@ import {
   Description,
   Li,
   ContentHeadGrid,
+  H4,
+  FilterHideGrid,
 } from "../listing/ListingStyle";
 import Image from "next/image";
+import ToggleSidebar from "./ToggleSidebar.js";
 
 export default function ListingContent() {
   const data = [
@@ -55,7 +58,27 @@ export default function ListingContent() {
     {
       id: 4,
       title: "The Ritz-Carlton Hotel Company, L.L.C.",
+      imgurl: "/images/Maskgroup1st.png",
+      link: "www.ritzcarlton.com",
+      employeecount: "90.2k Employees",
+      location: "Orlando, FL",
+      description:
+        "The Ritz-Carlton Hotel Company sets the gold standard in luxury hospitality worldwide. With an unshakeable credo and corporate philosophy of un-wavering commitment to service, both in our hotels and in our communities,",
+    },
+    {
+      id: 2,
       imgurl: "/images/Maskgroup2nd.png",
+      title: "The Ritz-Carlton Hotel Company, L.L.C.",
+      link: "www.ritzcarlton.com",
+      employeecount: "90.2k Employees",
+      location: "Orlando, FL",
+      description:
+        "The Ritz-Carlton Hotel Company sets the gold standard in luxury hospitality worldwide. With an unshakeable credo and corporate philosophy of un-wavering commitment to service, both in our hotels and in our communities,",
+    },
+    {
+      id: 3,
+      title: "The Ritz-Carlton Hotel Company, L.L.C.",
+      imgurl: "/images/Maskgroup3rd.svg",
       link: "www.ritzcarlton.com",
       employeecount: "90.2k Employees",
       location: "Orlando, FL",
@@ -68,13 +91,22 @@ export default function ListingContent() {
     <ListingContentGrid>
       <SidebarHeadingGrid>
         <h3>Search result: 30 Companies</h3>
+        <FilterHideGrid>
+          <H4>Filter</H4>
+          <ToggleSidebar />
+        </FilterHideGrid>
       </SidebarHeadingGrid>
       <Grid>
         {data.map((content) => (
           <DataMainGrid>
             <ContentHeadGrid>
               <ContentImgGrid>
-                <Image src={content.imgurl} width={50} height={50}></Image>
+                <Image
+                  src={content.imgurl}
+                  alt="content image"
+                  width={50}
+                  height={50}
+                ></Image>
               </ContentImgGrid>
               <Grid>
                 <Grid>
