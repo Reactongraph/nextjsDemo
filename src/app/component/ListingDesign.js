@@ -1,18 +1,19 @@
 "use client";
 
 import * as React from "react";
+import MenuItem from "@mui/material/MenuItem";
 import {
   Box,
-  IconButton,
+  Menu,
   Avatar,
   Tooltip,
   SearchIcon,
   StyledInputBase,
   InputBase,
   FormControl,
-  InputLabel,
   Select,
   Grid,
+  IconButton,
 } from "@mui/material";
 import Image from "next/image";
 import {
@@ -29,6 +30,11 @@ import Toggle from "./Toggle.js";
 import Headingbar from "./Headingbar";
 
 export default function ListingDesign() {
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <>
       <AppBarMain>
@@ -42,13 +48,43 @@ export default function ListingDesign() {
             />
             <SearchButton>Search</SearchButton>
 
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
-              <InputLabel>Lists</InputLabel>
-              <Select label="Lists"></Select>
+            <FormControl
+              sx={{
+                m: 1,
+                minWidth: 70,
+                fontFamily: "__Inter_Fallback_e66fe9",
+              }}
+            >
+              <Select
+                variant="standard"
+                value={age}
+                onChange={handleChange}
+                displayEmpty
+              >
+                <MenuItem value="">
+                  <em style={{ fontStyle: "normal" }}>Lists</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
             </FormControl>
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
-              <InputLabel>More</InputLabel>
-              <Select label="More"></Select>
+
+            <FormControl sx={{ m: 1, minWidth: 70 }}>
+              <Select
+                variant="standard"
+                value={age}
+                onChange={handleChange}
+                displayEmpty
+              >
+                
+                <MenuItem value="">
+                 
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
             </FormControl>
           </AppBarLeftGrid>
           <AppBarRightGrid>
@@ -74,7 +110,7 @@ export default function ListingDesign() {
 
             <Box>
               <Tooltip title="Open settings">
-                <IconButton>
+                <IconButton onClick={handleChange}>
                   <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
                 </IconButton>
               </Tooltip>

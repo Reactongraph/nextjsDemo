@@ -5,6 +5,18 @@ export const H3Grid = styled(Grid)`
   margin: auto;
 `;
 
+export const H3 = styled.h3`
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  @media screen and (max-width: 1600px) {
+    font-size: 22px;
+  }
+`;
+
 export const PaperGrid = styled(Grid)`
   box-shadow: 0px 4px 14px 0px rgba(74, 44, 245, 0.2);
   width: 50%;

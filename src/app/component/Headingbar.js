@@ -14,6 +14,12 @@ export default function Headingbar() {
   return (
     <HeadingGrid>
       <Grid>
+        <Image
+          src="/images/HeadingSideImage.png"
+          alt="background image"
+          width={100}
+          height={100}
+        ></Image>
         <H3>
           Find what you are looking for with
           <Paragraph>Alphasearch.</Paragraph>

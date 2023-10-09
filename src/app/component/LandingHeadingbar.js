@@ -3,7 +3,6 @@ import React from "react";
 import { SearchIcon, StyledInputBase, InputBase } from "@mui/material";
 
 import {
-  H3,
   HeadingGrid,
   ImageGrid,
   Image1,
@@ -15,6 +14,7 @@ import {
   PaperGrid,
   LeftGrid,
   RightGrid,
+  H3,
 } from "../landing/LandingStyle";
 import Image from "next/image";
 

@@ -70,10 +70,11 @@ export const AppBarExtendedGrid = styled(Grid)`
 export const SearchButton = styled(Button)`
   width: 70px;
   text-align: center;
-  padding: 20px;
+  padding: 20px 50px;
   background-color: rgba(74, 44, 245, 0.19);
   border-bottom: 2px solid rgba(74, 44, 245, 1);
   color: rgba(74, 44, 245, 1);
+  text-transform: capitalize;
 `;
 
 export const SideSearchButtonGrid = styled(Grid)`
