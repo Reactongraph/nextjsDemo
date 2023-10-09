@@ -207,7 +207,7 @@ export const LinkField = styled(Link)`
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0em;
-  color: #4A2CF5";
+  color: #4a2cf5;
 
   @media screen and (max-width: 600px) {
     font-size: 14px;

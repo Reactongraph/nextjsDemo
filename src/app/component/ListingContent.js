@@ -5,7 +5,6 @@ import { Grid } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import ToggleSidebar from "./ToggleSidebar";
 import {
   SidebarHeadingGrid,
   ListingContentGrid,
@@ -21,8 +20,6 @@ import {
   Li,
   ContentHeadGrid,
   ContentAreaGrid,
-  ToggleStyleGrid,
-  H4,
   H3,
 } from "../listing/ListingStyle";
 import Image from "next/image";
@@ -93,15 +90,6 @@ export default function ListingContent() {
 
   return (
     <>
-      <ToggleStyleGrid>
-        <Grid>
-          <H4>Filter</H4>
-        </Grid>
-        <Grid>
-          <ToggleSidebar />
-        </Grid>
-      </ToggleStyleGrid>
-
       <ListingContentGrid>
         <SidebarHeadingGrid>
           <h3>Search result: 30 Companies</h3>

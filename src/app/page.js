@@ -1,9 +1,9 @@
-import LoginPage from './component/loginPage'
+import LoginPage from "./component/loginPage";
 
 export default function Home() {
   return (
     <main>
-      <LoginPage/>
+      <LoginPage />
     </main>
-  )
+  );
 }

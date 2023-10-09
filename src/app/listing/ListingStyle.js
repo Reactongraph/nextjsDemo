@@ -115,7 +115,7 @@ export const ToggleStyleGrid = styled(Grid)`
 
   @media screen and (max-width: 900px) {
     display: flex;
-    margin-top: 10px;
+    margin: 10px 25px;
   }
 
   @media screen and (max-width: 600px) {

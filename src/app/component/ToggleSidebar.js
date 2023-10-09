@@ -2,6 +2,7 @@
 
 import { React, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
+import Chip from "@mui/material";
 import {
   Grid,
   Button,
@@ -272,7 +273,7 @@ export default function ToggleSidebar() {
                 valueLabelDisplay="auto"
               />
               <FilterBottomGrid>
-                <InputStyle2>Company I've viewed</InputStyle2>
+                <InputStyle2>Company I have viewed</InputStyle2>
                 <Switch
                   value={companyViewInput}
                   onChange={(event) => setCompanyViewInput(event.target.value)}

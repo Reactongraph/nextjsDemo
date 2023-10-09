@@ -15,7 +15,7 @@ export default function Headingbar() {
     <HeadingGrid>
       <Grid>
         <H3>
-          Find what you're looking for with
+          Find what you are looking for with
           <Paragraph>Alphasearch.</Paragraph>
         </H3>
       </Grid>

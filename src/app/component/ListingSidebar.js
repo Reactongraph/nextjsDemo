@@ -23,7 +23,9 @@ import {
   SliderStyle,
   TextGrid,
   FilterButton,
+  ToggleStyleGrid,
 } from "../listing/ListingStyle";
+import ToggleSidebar from "./ToggleSidebar";
 
 const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -82,6 +84,14 @@ export default function ListingSidebar() {
 
   return (
     <>
+      <ToggleStyleGrid>
+        <Grid>
+          <H4>Filter</H4>
+        </Grid>
+        <Grid>
+          <ToggleSidebar />
+        </Grid>
+      </ToggleStyleGrid>
       <ListingSidebarMain>
         <Grid>
           <SidebarHeadingGrid>
@@ -235,7 +245,7 @@ export default function ListingSidebar() {
               valueLabelDisplay="auto"
             />
             <FilterBottomGrid>
-              <InputStyle2>Company I've viewed</InputStyle2>
+              <InputStyle2>Company I have viewed</InputStyle2>
               <Switch
                 value={companyViewInput}
                 onChange={(event) => setCompanyViewInput(event.target.value)}
