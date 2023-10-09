@@ -17,7 +17,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import {
-  InputSearchLabel,
   SideSearchButtonGrid,
   ToggleStyle,
   ToggleStyleGrid,
@@ -53,18 +52,7 @@ export default function Toggle() {
             <MenuIcon />
           </ToggleStyle>
         </ToggleButtonGroup>
-        <Drawer
-          sx={{
-            width: "240",
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: "240",
-            },
-          }}
-          variant="persistent"
-          anchor="right"
-          open={open}
-        >
+        <Drawer variant="persistent" anchor="right" open={open}>
           <>
             <DrawerHeader>
               <IconButton onClick={handleDrawerClose}>
@@ -76,12 +64,8 @@ export default function Toggle() {
             </DrawerHeader>
             <Divider />
 
-            <Grid style={{ display: "grid", margin: "50px" }}>
-              <SideSearchButtonGrid>
-                <InputSearchLabel id="demo-simple-select-standard-label">
-                  Search
-                </InputSearchLabel>
-              </SideSearchButtonGrid>
+            <Grid style={{ display: "grid", margin: "50px", gap: "25px" }}>
+              <SideSearchButtonGrid>Search</SideSearchButtonGrid>
               <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
                 <InputLabel id="demo-simple-select-standard-label">
                   Lists

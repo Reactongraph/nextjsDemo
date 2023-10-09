@@ -5,11 +5,14 @@ import { Grid } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import ToggleSidebar from "./ToggleSidebar";
 import {
   SidebarHeadingGrid,
   ListingContentGrid,
   DataMainGrid,
-  ContentImgGrid,
+  ContentLeftGrid,
+  ContentRightGrid,
+  ContentTitleGrid,
   ListUl,
   ContentLink,
   CountGrid,
@@ -17,6 +20,10 @@ import {
   Description,
   Li,
   ContentHeadGrid,
+  ContentAreaGrid,
+  ToggleStyleGrid,
+  H4,
+  H3,
 } from "../listing/ListingStyle";
 import Image from "next/image";
 
@@ -85,55 +92,67 @@ export default function ListingContent() {
   ];
 
   return (
-    <ListingContentGrid>
-      <SidebarHeadingGrid>
-        <h3>Search result: 30 Companies</h3>
-      </SidebarHeadingGrid>
-      <Grid>
-        {data.map((content) => (
-          <DataMainGrid>
-            <ContentHeadGrid>
-              <ContentImgGrid>
-                <Image
-                  src={content.imgurl}
-                  alt="content image"
-                  width={50}
-                  height={50}
-                ></Image>
-              </ContentImgGrid>
-              <Grid>
-                <Grid>
-                  <h3>{content.title}</h3>
-                </Grid>
-                <ListUl>
-                  <ContentLink>
-                    <LanguageIcon />
-                    {content.link}
-                  </ContentLink>
-                  <Grid style={{ display: "flex", alignItems: "center" }}>
-                    <Li>
-                      <CountGrid>
-                        <Diversity3Icon />
-                        {content.employeecount}
-                      </CountGrid>
-                    </Li>
-                  </Grid>
+    <>
+      <ToggleStyleGrid>
+        <Grid>
+          <H4>Filter</H4>
+        </Grid>
+        <Grid>
+          <ToggleSidebar />
+        </Grid>
+      </ToggleStyleGrid>
 
+      <ListingContentGrid>
+        <SidebarHeadingGrid>
+          <h3>Search result: 30 Companies</h3>
+        </SidebarHeadingGrid>
+        <ContentAreaGrid>
+          {data.map((content) => (
+            <DataMainGrid>
+              <ContentHeadGrid>
+                <ContentLeftGrid>
+                  <Image
+                    src={content.imgurl}
+                    alt="content image"
+                    width={50}
+                    height={50}
+                  ></Image>
+                </ContentLeftGrid>
+                <ContentRightGrid>
+                  <ContentTitleGrid>
+                    <H3>{content.title}</H3>
+                  </ContentTitleGrid>
                   <Grid>
-                    <li>
-                      <LocationGrid>
-                        <FmdGoodIcon />
-                        {content.location}
-                      </LocationGrid>
-                    </li>
+                    <ListUl>
+                      <ContentLink>
+                        <LanguageIcon />
+                        {content.link}
+                      </ContentLink>
+                      <Grid style={{ display: "flex", alignItems: "center" }}>
+                        <Li>
+                          <CountGrid>
+                            <Diversity3Icon />
+                            {content.employeecount}
+                          </CountGrid>
+                        </Li>
+                      </Grid>
+                      <Grid>
+                        <li>
+                          <LocationGrid>
+                            <FmdGoodIcon />
+                            {content.location}
+                          </LocationGrid>
+                        </li>
+                      </Grid>
+                    </ListUl>
                   </Grid>
-                </ListUl>
-              </Grid>
-            </ContentHeadGrid>
-            <Description>{content.description}</Description>
-          </DataMainGrid>
-        ))}
-      </Grid>
-    </ListingContentGrid>
+                </ContentRightGrid>
+              </ContentHeadGrid>
+              <Description>{content.description}</Description>
+            </DataMainGrid>
+          ))}
+        </ContentAreaGrid>
+      </ListingContentGrid>
+    </>
   );
 }

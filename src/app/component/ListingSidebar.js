@@ -1,6 +1,14 @@
 "use client";
 import { React, useState } from "react";
-import { Grid, Switch, FormControl, Chip } from "@mui/material";
+import {
+  Grid,
+  Switch,
+  FormControl,
+  Chip,
+  Box,
+  TextField,
+  Autocomplete,
+} from "@mui/material";
 
 import {
   ListingSidebarMain,
@@ -15,12 +23,7 @@ import {
   SliderStyle,
   TextGrid,
   FilterButton,
-  ToggleStyleGrid,
 } from "../listing/ListingStyle";
-import Box from "@mui/material/Box";
-import ToggleSidebar from "./ToggleSidebar";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 
 const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -79,10 +82,6 @@ export default function ListingSidebar() {
 
   return (
     <>
-      <ToggleStyleGrid>
-        <H4>Filter</H4>
-        <ToggleSidebar />
-      </ToggleStyleGrid>
       <ListingSidebarMain>
         <Grid>
           <SidebarHeadingGrid>
@@ -164,9 +163,7 @@ export default function ListingSidebar() {
               )}
               renderInput={(params) => (
                 <Grid>
-               
                   <FormControl sx={{ width: "100%" }}>
-                    
                     <TextField
                       value={searchLocationInput}
                       onChange={(event) =>

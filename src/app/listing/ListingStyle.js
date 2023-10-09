@@ -1,8 +1,6 @@
 import {
   AppBar,
   Grid,
-  Toolbar,
-  List,
   Paper,
   InputLabel,
   TextField,
@@ -17,7 +15,6 @@ import Image from "next/image";
 
 export const ListingPageMain = styled(Grid)`
   background-color: #fff;
-  height: 100vh;
 `;
 export const AppBarMain = styled(AppBar)`
   background-color: #fff;
@@ -25,54 +22,74 @@ export const AppBarMain = styled(AppBar)`
   position: static;
 `;
 
-export const ToolbarStyle = styled(Toolbar)`
+export const AppBarInnerGrid = styled(Grid)`
   margin: 0px 2%;
+  display: flex;
+  width: 100%;
 
   @media screen and (max-width: 900px) {
     justify-content: space-between;
   }
 `;
 
-export const NavSideGrid = styled(Grid)`
+export const AppBarLeftGrid = styled(Grid)`
+  width: 70%;
   display: flex;
   align-items: center;
+  padding-left: 1%;
+  gap: 40px;
+
   @media screen and (max-width: 900px) {
     display: none;
   }
 `;
-export const ListStyle = styled(List)`
-  color: black;
+
+export const AppBarRightGrid = styled(Grid)`
+  width: 30%;
   display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
+  align-items: center;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 
-export const SearchButtonGrid = styled(Grid)`
+export const AppBarExtendedGrid = styled(Grid)`
+  display: none;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 8%;
+  }
+`;
+
+export const SearchButton = styled(Button)`
   width: 70px;
   text-align: center;
-  padding-top: 20px;
+  padding: 20px;
   background-color: rgba(74, 44, 245, 0.19);
   border-bottom: 2px solid rgba(74, 44, 245, 1);
-  margin-right: 33px;
-  margin-left: 25px;
+  color: rgba(74, 44, 245, 1);
 `;
 
 export const SideSearchButtonGrid = styled(Grid)`
   width: 100%;
   text-align: center;
-  padding-top: 20px;
+  padding: 20px;
   background-color: rgba(74, 44, 245, 0.19);
   border-bottom: 2px solid rgba(74, 44, 245, 1);
-`;
-
-export const InputSearchLabel = styled(InputLabel)`
   color: rgba(74, 44, 245, 1);
 `;
 
 export const PaperSearch = styled(Paper)`
   padding: 2px 4px;
+  width: 100%;
   display: flex;
   align-items: center;
-
-  height: 40%;
   margin: auto 2% auto auto;
 
   @media screen and (max-width: 900px) {
@@ -97,7 +114,13 @@ export const ToggleStyleGrid = styled(Grid)`
   display: none;
 
   @media screen and (max-width: 900px) {
-    display: contents;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin-top: 8px;
+    margin-right: 2%;
   }
 `;
 
@@ -121,9 +144,9 @@ export const HeadingGrid = styled(Grid)`
 `;
 
 export const DrawerHeader = styled(Grid)`
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-start",
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export const Paragraph = styled.p`
@@ -147,6 +170,10 @@ export const ImageGrid = styled(Grid)`
   @media screen and (max-width: 1600px) {
     margin-right: -15px;
   }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const Image1 = styled(Image)`
@@ -169,7 +196,7 @@ export const ListingSidebarMain = styled(Grid)`
   height: 100%;
   border: 1px solid grey;
   float: left;
-  backgroundcolor: white;
+  background-color: white;
   margin: 53px 90px auto 60px;
   border-radius: 10px;
 
@@ -186,6 +213,10 @@ export const SidebarHeadingGrid = styled(Grid)`
 
   @media screen and (max-width: 900px) {
     font-size: 14px;
+  }
+
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
   }
 `;
 
@@ -264,7 +295,7 @@ export const SliderStyle = styled(Slider)`
 export const FilterBottomGrid = styled(Grid)`
   display: flex;
   justify-content: space-between;
-  marginbottom: 34px;
+  margin-bottom: 34px;
 `;
 
 export const FilterHideGrid = styled(Grid)`
@@ -275,10 +306,18 @@ export const FilterHideGrid = styled(Grid)`
     align-item: center;
   }
 `;
+
+export const ContentAreaGrid = styled(Grid)`
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-top: 30px;
+  margin-right: 25px;
+`;
+
 export const DataMainGrid = styled(Grid)`
   border: 1px solid grey;
   border-radius: 10px;
-  margin: 44px auto;
   padding: 8px;
 
   @media screen and (max-width: 900px) {
@@ -286,21 +325,32 @@ export const DataMainGrid = styled(Grid)`
   }
 `;
 
-export const ContentImgGrid = styled(Grid)`
-  padding: 5px;
-  margin: 5px;
+export const ContentLeftGrid = styled(Grid)`
+  margin: 15px;
+
+  @media screen and (max-width: 900px) {
+    width: 20%;
+  }
 `;
+
+export const ContentRightGrid = styled(Grid)`
+  @media screen and (max-width: 900px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
+export const ContentTitleGrid = styled(Grid)``;
 
 export const ListUl = styled.ul`
   display: flex;
   padding: 15px 0px;
-
-  @media screen and (max-width: 900px) {
-    font-size: 12px;
-  }
+  width: 100%;
 
   @media screen and (max-width: 600px) {
-    font-size: 10px;
+    display: inline-block;
   }
 `;
 export const ContentLink = styled(Link)`
@@ -351,7 +401,7 @@ export const LocationGrid = styled(Grid)`
 
 export const Description = styled.p`
   color: rgba(88, 89, 91, 1);
-  fontsize: 18px;
+  font-size: 18px;
 
   @media screen and (max-width: 900px) {
     font-size: 14px;
