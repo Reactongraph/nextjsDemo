@@ -8,5 +8,5 @@ export default function MuiChip() {
     setChips(newChips);
   };
 
-  return <MuiChipsInputStyle value={chips} onChange={handleChange} />;
+  return <MuiChipsInputStyle placeholder="Type any term" value={chips} onChange={handleChange} />;
 }
