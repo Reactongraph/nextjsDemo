@@ -20,7 +20,7 @@ import {
   Li,
   ContentHeadGrid,
   ContentAreaGrid,
-  H3,
+  ContentH3,
 } from "../listing/ListingStyle";
 import Image from "next/image";
 
@@ -96,7 +96,7 @@ export default function ListingContent() {
         </SidebarHeadingGrid>
         <ContentAreaGrid>
           {data.map((content) => (
-            <DataMainGrid>
+            <DataMainGrid key={content.id}>
               <ContentHeadGrid>
                 <ContentLeftGrid>
                   <Image
@@ -108,7 +108,7 @@ export default function ListingContent() {
                 </ContentLeftGrid>
                 <ContentRightGrid>
                   <ContentTitleGrid>
-                    <H3>{content.title}</H3>
+                    <ContentH3>{content.title}</ContentH3>
                   </ContentTitleGrid>
                   <Grid>
                     <ListUl>

@@ -30,10 +30,31 @@ import Toggle from "./Toggle.js";
 import Headingbar from "./Headingbar";
 
 export default function ListingDesign() {
-  const [age, setAge] = React.useState("");
+  const dummyMenuItems = [
+    {
+      title: "Profile",
+    },
+    {
+      title: "My Account",
+    },
+    {
+      title: "Logout",
+    },
+  ];
+
+  const [list, setList] = React.useState("");
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setList(event.target.value);
   };
   return (
     <>
@@ -57,7 +78,7 @@ export default function ListingDesign() {
             >
               <Select
                 variant="standard"
-                value={age}
+                value={list}
                 onChange={handleChange}
                 displayEmpty
               >
@@ -73,13 +94,12 @@ export default function ListingDesign() {
             <FormControl sx={{ m: 1, minWidth: 70 }}>
               <Select
                 variant="standard"
-                value={age}
+                value={list}
                 onChange={handleChange}
                 displayEmpty
               >
-                
                 <MenuItem value="">
-                 
+                  <em style={{ fontStyle: "normal" }}>More</em>
                 </MenuItem>
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
@@ -110,9 +130,30 @@ export default function ListingDesign() {
 
             <Box>
               <Tooltip title="Open settings">
-                <IconButton onClick={handleChange}>
+                <IconButton
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
                   <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
                 </IconButton>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  {dummyMenuItems.map((item) => (
+                    <MenuItem
+                      onClick={handleClose}
+                      key={item.title}
+                      value={item.title}
+                    >
+                      {item.title}
+                    </MenuItem>
+                  ))}
+                </Menu>
               </Tooltip>
             </Box>
           </AppBarRightGrid>

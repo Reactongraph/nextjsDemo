@@ -1,13 +1,8 @@
 import React from "react";
 
-import { SearchIcon, StyledInputBase, InputBase } from "@mui/material";
+import { SearchIcon, StyledInputBase, InputBase, Grid } from "@mui/material";
 
-import {
-  HeadingGrid,
-  ImageGrid,
-  Image1,
-  SearchStyle,
-} from "../listing/ListingStyle";
+import { ImageGrid, SearchStyle } from "../listing/ListingStyle";
 
 import {
   H3Grid,
@@ -15,13 +10,23 @@ import {
   LeftGrid,
   RightGrid,
   H3,
+  LandingHeadingGrid,
+  AlphaImage,
 } from "../landing/LandingStyle";
 import Image from "next/image";
 
 export default function LandingHeadingbar() {
   return (
     <>
-      <HeadingGrid>
+      <LandingHeadingGrid>
+        <Grid>
+          <Image
+            src="/images/HeadingSideImage.png"
+            alt="background image"
+            width={150}
+            height={200}
+          ></Image>
+        </Grid>
         <H3Grid>
           <H3>
             Find what you are looking for with
@@ -29,14 +34,14 @@ export default function LandingHeadingbar() {
           </H3>
         </H3Grid>
         <ImageGrid>
-          <Image1
+          <AlphaImage
             src="./images/ALphaSearchsymbol2.svg"
             alt="alpha image"
             width={163}
             height={145}
           />
         </ImageGrid>
-      </HeadingGrid>
+      </LandingHeadingGrid>
       <PaperGrid>
         <LeftGrid>
           <SearchStyle>

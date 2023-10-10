@@ -12,6 +12,7 @@ import {
   TextField,
   Box,
   ToggleButtonGroup,
+  SwipeableDrawer,
 } from "@mui/material";
 import {
   H4,
@@ -31,6 +32,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import MuiChip from "./MuiChip";
 
 const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -105,11 +107,14 @@ export default function ToggleSidebar() {
       >
         <TuneIcon />
       </ToggleButtonGroup>
-
-      <Dialog
+      <SwipeableDrawer
+        anchor="bottom"
         open={open}
         onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+        disableSwipeToOpen={false}
+        ModalProps={{
+          keepMounted: true,
+        }}
       >
         <DialogTitle
           id="responsive-dialog-title"
@@ -125,30 +130,7 @@ export default function ToggleSidebar() {
             <Grid style={{ padding: "5px" }}>
               <H4>Terms</H4>
               <InputStyle>Include these terms</InputStyle>
-
-              <Autocomplete
-                multiple
-                freeSolo
-                value={termInput}
-                options={[]}
-                renderTags={(value, getTagProps) =>
-                  value.map((option, index) => (
-                    <Chip
-                      style={{ color: "rgba(71, 100, 246, 1)" }}
-                      label={option}
-                      {...getTagProps({ index })}
-                    />
-                  ))
-                }
-                renderInput={(params) => (
-                  <TextField
-                    value={termInput}
-                    onChange={(event) => setTermInput(event.target.value)}
-                    {...params}
-                    placeholder="Type any term"
-                  />
-                )}
-              />
+              <MuiChip />
 
               <FormControl sx={{ width: "100%" }}></FormControl>
               <InputStyle>Exclude these terms</InputStyle>
@@ -294,7 +276,7 @@ export default function ToggleSidebar() {
             Close
           </Button>
         </DialogActions>
-      </Dialog>
+      </SwipeableDrawer>
     </>
   );
 }

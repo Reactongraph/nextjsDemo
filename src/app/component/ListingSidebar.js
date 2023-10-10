@@ -26,6 +26,7 @@ import {
   ToggleStyleGrid,
 } from "../listing/ListingStyle";
 import ToggleSidebar from "./ToggleSidebar";
+import MuiChip from "./MuiChip";
 
 const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -104,29 +105,7 @@ export default function ListingSidebar() {
             <H4>Terms</H4>
             <InputStyle>Include these terms</InputStyle>
 
-            <Autocomplete
-              multiple
-              freeSolo
-              value={termInput}
-              options={[]}
-              renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
-                  <Chip
-                    style={{ color: "rgba(71, 100, 246, 1)" }}
-                    label={option}
-                    {...getTagProps({ index })}
-                  />
-                ))
-              }
-              renderInput={(params) => (
-                <TextField
-                  value={termInput}
-                  onChange={(event) => setTermInput(event.target.value)}
-                  {...params}
-                  placeholder="Type any term"
-                />
-              )}
-            />
+            <MuiChip />
 
             <FormControl sx={{ width: "100%" }}></FormControl>
             <InputStyle>Exclude these terms</InputStyle>

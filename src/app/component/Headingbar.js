@@ -29,14 +29,14 @@ export default function Headingbar() {
         <Image1
           src="./images/ALphaSearchsymbol2.svg"
           alt="alpha image"
-          width={100}
-          height={80}
+          width={150}
+          height={100}
         />
         <Image
           src="./images/ALphaSearchsymbol1.svg"
           alt="alpha image"
-          width={100}
-          height={80}
+          width={150}
+          height={100}
         />
       </ImageGrid>
     </HeadingGrid>

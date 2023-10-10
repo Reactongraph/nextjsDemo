@@ -12,6 +12,7 @@ import {
 import { Search } from "@mui/icons-material";
 import styled from "styled-components";
 import Image from "next/image";
+import { MuiChipsInput } from "mui-chips-input";
 
 export const ListingPageMain = styled(Grid)`
   background-color: #fff;
@@ -131,6 +132,22 @@ export const H3 = styled.h3`
   line-height: 37px;
   letter-spacing: 0em;
   text-align: left;
+  position: relative;
+  left: 0;
+  top: -84px;
+  padding-left: 56px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 20px;
+  }
+`;
+
+export const ContentH3 = styled.h3`
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: left;
 
   @media screen and (max-width: 900px) {
     font-size: 20px;
@@ -140,7 +157,6 @@ export const H3 = styled.h3`
 export const HeadingGrid = styled(Grid)`
   display: flex;
   height: auto;
-  padding: 20px 56px;
   justify-content: space-between;
 `;
 
@@ -244,6 +260,11 @@ export const H5 = styled.h5`
   @media screen and (max-width: 900px) {
     font-size: 12px;
   }
+`;
+
+export const MuiChipsInputStyle = styled(MuiChipsInput)`
+  width: 100%;
+  padding: 2%;
 `;
 
 export const ClearButton = styled(Button)`

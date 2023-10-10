@@ -1,5 +1,16 @@
 import styled from "styled-components";
 import { Grid } from "@mui/material";
+import Image from "next/image";
+
+export const LandingHeadingGrid = styled(Grid)`
+  display: flex;
+  justify-content: space-between;
+  height: 157px;
+
+  @media screen and (max-width: 900px) {
+    height: 100px;
+  }
+`;
 
 export const H3Grid = styled(Grid)`
   margin: auto;
@@ -15,11 +26,28 @@ export const H3 = styled.h3`
   @media screen and (max-width: 1600px) {
     font-size: 22px;
   }
+  @media screen and (max-width: 900px) {
+    position: relative;
+    right: 70px;
+    font-size: 18px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 12px;
+  }
+`;
+
+export const AlphaImage = styled(Image)`
+  position: relative;
+  right: 70px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 
 export const PaperGrid = styled(Grid)`
   box-shadow: 0px 4px 14px 0px rgba(74, 44, 245, 0.2);
-  width: 50%;
+  width: 60%;
   height: 80px;
   margin: auto;
   display: flex;
@@ -43,8 +71,9 @@ export const RightGrid = styled(Grid)`
   display: flex;
   border-left: 1px solid rgba(88, 89, 91, 0.3);
   color: rgba(88, 89, 91, 0.3);
-  padding: 5px;
   width: 20%;
+  gap: 8px;
+  padding-left: 10px;
 
   @media screen and (max-width: 900px) {
     display: none;
