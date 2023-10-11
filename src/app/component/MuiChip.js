@@ -15,11 +15,4 @@ export default function MuiChip() {
       onChange={handleChange}
     />
   );
-  return (
-    <MuiChipsInputStyle
-      placeholder="Type any term"
-      value={chips}
-      onChange={handleChange}
-    />
-  );
 }
