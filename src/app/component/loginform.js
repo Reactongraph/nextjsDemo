@@ -19,11 +19,13 @@ import {
   LinkGrid,
   TextField2,
 } from "../../styles/loginformstyle";
+import { useRouter } from "next/navigation";
 
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
 export default function LoginForm() {
+  const router = useRouter();
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
 
@@ -58,6 +60,7 @@ export default function LoginForm() {
       setFormValid("Password is set to 5-20 Characters. Please Re-Enter");
       return;
     }
+    router.push("/landing");
     setFormValid(null);
     console.log(emailInput);
     console.log(passwordInput);

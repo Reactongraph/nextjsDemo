@@ -11,6 +11,7 @@ import {
   Select,
   InputLabel,
 } from "@mui/material";
+import Slider from "@mui/material/Slider";
 
 import {
   ListingSidebarMain,
@@ -85,8 +86,28 @@ export default function ListingSidebar() {
   const [secondEmployeeInput, setSecondEmployeeInput] = useState("");
   const [companyViewInput, setCompanyViewInput] = useState("");
 
-  const handleFilter = (e) => {
-    e.preventDefault();
+  const [sliderValue, setSliderValue] = useState(marks.label);
+
+  const [sliderValueEmployee, setSliderValueEmployee] = useState(marks.label);
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+  };
+
+  const handleSliderChangeEmployee = (event, newValue) => {
+    setSliderValueEmployee(newValue);
+  };
+
+  const handleTextFieldChange = (event) => {
+    const newValue = event.target.value;
+    setSliderValue(newValue);
+  };
+  const handleTextFieldChangeEmployee = (event) => {
+    const newValue = event.target.value;
+    setSliderValueEmployee(newValue);
+  };
+
+  const handleFilter = () => {
     console.log(termInput);
     console.log(termExcludeInput);
     console.log(searchIncludeInput);
@@ -110,6 +131,18 @@ export default function ListingSidebar() {
     setFirstEmployeeInput("");
     setSecondEmployeeInput("");
     setCompanyViewInput("");
+  };
+
+  const handleFilternew = () => {
+    console.log("Filtering with input:", searchIncludeInput);
+    console.log(searchExcludeInput);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      console.log();
+      handleFilternew();
+    }
   };
 
   return (
@@ -143,36 +176,16 @@ export default function ListingSidebar() {
             <H5>Industry</H5>
             <InputStyle>Include</InputStyle>
 
-            <Autocomplete
-              id="industry-select-demo"
-              style={{ margin: "5px" }}
-              options={Industry}
-              autoHighlight
-              getOptionLabel={(option) => option.label}
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ mr: 2, flexShrink: 0 }} {...props}>
-                  {option.label}
-                </Box>
-              )}
-              renderInput={(params) => (
-                <FormControl sx={{ width: "100%" }} onClick={handleFilter}>
-                  <TextField
-                    value={searchIncludeInput}
-                    onChange={(event) =>
-                      setsearchIncludeInput(event.currentTarget.value)
-                    }
-                    {...params}
-                    label="Type and search"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new",
-                    }}
-                  />
-                </FormControl>
-              )}
-            />
-            <InputStyle>Exclude</InputStyle>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                value={searchIncludeInput}
+                onKeyDown={handleKeyDown}
+                onChange={(event) => setsearchIncludeInput(event.target.value)}
+                label="Type and search"
+              />
+            </FormControl>
 
+            <InputStyle>Exclude</InputStyle>
             <Autocomplete
               id="industry-select-demo"
               style={{ margin: "5px" }}
@@ -189,6 +202,7 @@ export default function ListingSidebar() {
                   <FormControl sx={{ width: "100%" }}>
                     <TextField
                       value={searchExcludeInput}
+                      onKeyDown={handleKeyDown}
                       onChange={(event) =>
                         setSearchExcludeInput(event.target.value)
                       }
@@ -239,70 +253,68 @@ export default function ListingSidebar() {
 
             <H4>Size</H4>
             <InputStyle2>Revenue</InputStyle2>
-            <TextGrid>
-              <FormControl sx={{ width: "100%" }}>
-                <TextFieldStyle
-                  placeholder="0"
-                  value={firstRevenueInput}
-                  onChange={(event) => setFirstRevenueInput(event.target.value)}
-                ></TextFieldStyle>
-              </FormControl>
-
-              <FormControl sx={{ width: "100%" }}>
-                <TextFieldStyle
-                  placeholder="$ 2.5 Million"
-                  value={secondRevenueInput}
-                  onChange={(event) =>
-                    setSecondRevenueInput(event.target.value)
-                  }
-                ></TextFieldStyle>
-              </FormControl>
-            </TextGrid>
 
             <Box sx={{ width: 350 }}>
+              <TextGrid>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextFieldStyle
+                    placeholder="0"
+                    value={sliderValue}
+                    onChange={handleTextFieldChange}
+                    id="slider-text"
+                  ></TextFieldStyle>
+                </FormControl>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextFieldStyle
+                    placeholder="$ 2.5 Million"
+                    value={sliderValue}
+                    onChange={handleTextFieldChange}
+                    id="slider-text"
+                  ></TextFieldStyle>
+                </FormControl>
+              </TextGrid>
               <SliderStyle
+                value={sliderValue}
+                onChange={handleSliderChange}
                 getAriaLabel={() => "Minimum distance"}
                 defaultValue={80}
-                value={value}
                 getAriaValueText={valuetext}
                 step={10}
                 valueLabelDisplay="auto"
                 marks={marks}
               />
             </Box>
-            <InputStyle2>Employee</InputStyle2>
-            <TextGrid>
-              <FormControl sx={{ width: "100%" }}>
-                <TextFieldStyle
-                  placeholder="0 (Min)"
-                  value={firstEmployeeInput}
-                  onChange={(event) =>
-                    setFirstEmployeeInput(event.target.value)
-                  }
-                ></TextFieldStyle>
-              </FormControl>
 
-              <FormControl sx={{ width: "100%" }}>
-                <TextFieldStyle
-                  placeholder="10,000+"
-                  value={secondEmployeeInput}
-                  onChange={(event) =>
-                    setSecondEmployeeInput(event.target.value)
-                  }
-                ></TextFieldStyle>
-              </FormControl>
-            </TextGrid>
+            <InputStyle2>Employee</InputStyle2>
 
             <Box sx={{ width: 350 }}>
+              <TextGrid>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextFieldStyle
+                    placeholder="0 (Min)"
+                    value={sliderValueEmployee}
+                    onChange={handleTextFieldChangeEmployee}
+                    id="slider-text"
+                  ></TextFieldStyle>
+                </FormControl>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextFieldStyle
+                    placeholder="10,000+"
+                    value={sliderValueEmployee}
+                    onChange={handleTextFieldChangeEmployee}
+                    id="slider-text"
+                  ></TextFieldStyle>
+                </FormControl>
+              </TextGrid>
               <SliderStyle
+                value={sliderValueEmployee}
+                onChange={handleSliderChangeEmployee}
                 getAriaLabel={() => "Minimum distance"}
                 defaultValue={80}
-                value={value}
                 getAriaValueText={valuetext}
                 step={10}
                 valueLabelDisplay="auto"
                 marks={marks}
-                disableSwap
               />
             </Box>
 

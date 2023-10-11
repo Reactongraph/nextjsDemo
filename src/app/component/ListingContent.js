@@ -23,6 +23,7 @@ import {
   ContentH3,
 } from "../listing/ListingStyle";
 import Image from "next/image";
+import ContentDrawer from "./ContentDrawer";
 
 export default function ListingContent() {
   const data = [
@@ -88,6 +89,12 @@ export default function ListingContent() {
     },
   ];
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <>
       <ListingContentGrid>
@@ -96,7 +103,7 @@ export default function ListingContent() {
         </SidebarHeadingGrid>
         <ContentAreaGrid>
           {data.map((content) => (
-            <DataMainGrid key={content.id}>
+            <DataMainGrid key={content.id} onClick={handleDrawerOpen}>
               <ContentHeadGrid>
                 <ContentLeftGrid>
                   <Image
