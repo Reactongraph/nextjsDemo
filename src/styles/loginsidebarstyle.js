@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import styled from "styled-components";
+import { plusJakartaSans } from "./fontfamily";
 
 export const MainDiv = styled(Grid)`
   display: flex;
@@ -49,7 +50,7 @@ export const RightSideImage = styled.img`
 `;
 
 export const LeftHeading = styled.p`
-  font-family: Plus Jakarta Sans;
+  font-family: plusJakartaSans;
   font-size: 46px;
   font-weight: 800;
   line-height: 58px;

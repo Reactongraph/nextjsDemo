@@ -1,6 +1,7 @@
 import React from "react";
 
-import { SearchIcon, StyledInputBase, InputBase, Grid } from "@mui/material";
+import { InputBase, Grid } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { ImageGrid, SearchStyle } from "../listing/ListingStyle";
 
@@ -46,10 +47,6 @@ export default function LandingHeadingbar() {
         <LeftGrid>
           <SearchStyle>
             <SearchIcon />
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
           </SearchStyle>
           <InputBase
             sx={{ ml: 1, flex: 1 }}

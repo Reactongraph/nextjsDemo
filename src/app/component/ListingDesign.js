@@ -73,7 +73,6 @@ export default function ListingDesign() {
               sx={{
                 m: 1,
                 minWidth: 70,
-                fontFamily: "__Inter_Fallback_e66fe9",
               }}
             >
               <Select
@@ -129,7 +128,6 @@ export default function ListingDesign() {
             </PaperSearch>
 
             <Box>
-              <Tooltip title="Open settings">
                 <IconButton
                   aria-controls="simple-menu"
                   aria-haspopup="true"
@@ -154,7 +152,6 @@ export default function ListingDesign() {
                     </MenuItem>
                   ))}
                 </Menu>
-              </Tooltip>
             </Box>
           </AppBarRightGrid>
         </AppBarInnerGrid>

@@ -4,10 +4,12 @@ import {
   Grid,
   Switch,
   FormControl,
-  Chip,
+  MenuItem,
   Box,
   TextField,
   Autocomplete,
+  Select,
+  InputLabel,
 } from "@mui/material";
 
 import {
@@ -43,18 +45,45 @@ const countries = [
   },
 ];
 
+const Industry = [
+  {
+    label: "Agreeculter",
+  },
+  {
+    label: "Health",
+  },
+  {
+    label: "Finance",
+  },
+];
+
+const marks = [
+  {
+    value: 0,
+    label: "$ 0",
+  },
+  {
+    value: 80,
+    label: "$ 2.5 M",
+  },
+];
+
+function valuetext(value) {
+  return `${value}`;
+}
+
 export default function ListingSidebar() {
   const [value, setValue] = useState([0, 87]);
-  const [termInput, setTermInput] = useState(["Hotel"]);
-  const [termExcludeInput, setTermExcludeInput] = useState();
-  const [searchIncludeInput, setsearchIncludeInput] = useState();
-  const [searchExcludeInput, setSearchExcludeInput] = useState();
-  const [searchLocationInput, setSearchLocationInput] = useState();
-  const [firstRevenueInput, setFirstRevenueInput] = useState();
-  const [secondRevenueInput, setSecondRevenueInput] = useState();
-  const [firstEmployeeInput, setFirstEmployeeInput] = useState();
-  const [secondEmployeeInput, setSecondEmployeeInput] = useState();
-  const [companyViewInput, setCompanyViewInput] = useState();
+  const [termInput, setTermInput] = useState("");
+  const [termExcludeInput, setTermExcludeInput] = useState("");
+  const [searchIncludeInput, setsearchIncludeInput] = useState("");
+  const [searchExcludeInput, setSearchExcludeInput] = useState("");
+  const [searchLocationInput, setSearchLocationInput] = useState("");
+  const [firstRevenueInput, setFirstRevenueInput] = useState("");
+  const [secondRevenueInput, setSecondRevenueInput] = useState("");
+  const [firstEmployeeInput, setFirstEmployeeInput] = useState("");
+  const [secondEmployeeInput, setSecondEmployeeInput] = useState("");
+  const [companyViewInput, setCompanyViewInput] = useState("");
 
   const handleFilter = (e) => {
     e.preventDefault();
@@ -96,7 +125,7 @@ export default function ListingSidebar() {
       <ListingSidebarMain>
         <Grid>
           <SidebarHeadingGrid>
-            <FilterButton onClick={handleFilter}>Filter</FilterButton>
+            <FilterButton>Filter</FilterButton>
             <ClearButton color="error" onClick={handleClear}>
               Clear All
             </ClearButton>
@@ -109,33 +138,71 @@ export default function ListingSidebar() {
 
             <FormControl sx={{ width: "100%" }}></FormControl>
             <InputStyle>Exclude these terms</InputStyle>
-            <FormControl sx={{ width: "100%" }}>
-              <TextFieldStyle
-                placeholder="Type any term"
-                value={termExcludeInput}
-                onChange={(event) => setTermExcludeInput(event.target.value)}
-              ></TextFieldStyle>
-            </FormControl>
+            <MuiChip />
             <H4>Operating Model</H4>
             <H5>Industry</H5>
             <InputStyle>Include</InputStyle>
 
-            <FormControl sx={{ width: "100%" }}>
-              <TextFieldStyle
-                placeholder="Type and search"
-                value={searchIncludeInput}
-                onChange={(event) => setsearchIncludeInput(event.target.value)}
-              ></TextFieldStyle>
-            </FormControl>
-
+            <Autocomplete
+              id="industry-select-demo"
+              style={{ margin: "5px" }}
+              options={Industry}
+              autoHighlight
+              getOptionLabel={(option) => option.label}
+              renderOption={(props, option) => (
+                <Box component="li" sx={{ mr: 2, flexShrink: 0 }} {...props}>
+                  {option.label}
+                </Box>
+              )}
+              renderInput={(params) => (
+                <FormControl sx={{ width: "100%" }} onClick={handleFilter}>
+                  <TextField
+                    value={searchIncludeInput}
+                    onChange={(event) =>
+                      setsearchIncludeInput(event.currentTarget.value)
+                    }
+                    {...params}
+                    label="Type and search"
+                    inputProps={{
+                      ...params.inputProps,
+                      autoComplete: "new",
+                    }}
+                  />
+                </FormControl>
+              )}
+            />
             <InputStyle>Exclude</InputStyle>
-            <FormControl sx={{ width: "100%" }}>
-              <TextFieldStyle
-                placeholder="Type and search"
-                value={searchExcludeInput}
-                onChange={(event) => setSearchExcludeInput(event.target.value)}
-              ></TextFieldStyle>
-            </FormControl>
+
+            <Autocomplete
+              id="industry-select-demo"
+              style={{ margin: "5px" }}
+              options={Industry}
+              autoHighlight
+              getOptionLabel={(option) => option.label}
+              renderOption={(props, option) => (
+                <Box component="li" sx={{ mr: 2, flexShrink: 0 }} {...props}>
+                  {option.label}
+                </Box>
+              )}
+              renderInput={(params) => (
+                <Grid>
+                  <FormControl sx={{ width: "100%" }}>
+                    <TextField
+                      value={searchExcludeInput}
+                      onChange={(event) =>
+                        setSearchExcludeInput(event.target.value)
+                      }
+                      {...params}
+                      label="Type and search"
+                      inputProps={{
+                        ...params.inputProps,
+                        autoComplete: "new",
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
+              )}
+            />
 
             <H4>Location</H4>
             <InputStyle>Headquaters</InputStyle>
@@ -162,7 +229,7 @@ export default function ListingSidebar() {
                       label="Select Location"
                       inputProps={{
                         ...params.inputProps,
-                        autoComplete: "new-password", // disable autocomplete and autofill
+                        autoComplete: "new-password",
                       }}
                     />
                   </FormControl>
@@ -191,11 +258,18 @@ export default function ListingSidebar() {
                 ></TextFieldStyle>
               </FormControl>
             </TextGrid>
-            <SliderStyle
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              valueLabelDisplay="auto"
-            />
+
+            <Box sx={{ width: 350 }}>
+              <SliderStyle
+                getAriaLabel={() => "Minimum distance"}
+                defaultValue={80}
+                value={value}
+                getAriaValueText={valuetext}
+                step={10}
+                valueLabelDisplay="auto"
+                marks={marks}
+              />
+            </Box>
             <InputStyle2>Employee</InputStyle2>
             <TextGrid>
               <FormControl sx={{ width: "100%" }}>
@@ -218,11 +292,20 @@ export default function ListingSidebar() {
                 ></TextFieldStyle>
               </FormControl>
             </TextGrid>
-            <SliderStyle
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              valueLabelDisplay="auto"
-            />
+
+            <Box sx={{ width: 350 }}>
+              <SliderStyle
+                getAriaLabel={() => "Minimum distance"}
+                defaultValue={80}
+                value={value}
+                getAriaValueText={valuetext}
+                step={10}
+                valueLabelDisplay="auto"
+                marks={marks}
+                disableSwap
+              />
+            </Box>
+
             <FilterBottomGrid>
               <InputStyle2>Company I have viewed</InputStyle2>
               <Switch

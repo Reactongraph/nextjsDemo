@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FormControl, Checkbox, Alert } from "@mui/material";
+import { FormControl, Checkbox, Alert, Link } from "@mui/material";
 import {
   Heading,
   Wrapper,
@@ -41,6 +41,15 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!emailInput) {
+      setFormValid("Please enter an Email address");
+      return;
+    }
+    if (!passwordInput) {
+      setFormValid("Please enter Password");
+      return;
+    }
     if (emailError || !emailInput) {
       setFormValid("Email is invalid. Please Re-Enter");
       return;
@@ -133,9 +142,11 @@ export default function LoginForm() {
               Forgot Password?
             </LinkField>
           </LinkGrid>
-          <MainButton onClick={handleSubmit} variant="contained" fullWidth>
-            Login
-          </MainButton>
+          <Link href="/landing">
+            <MainButton onClick={handleSubmit} variant="contained" fullWidth>
+              Login
+            </MainButton>
+          </Link>
           <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
         </Wrapper>
       </LeftGrid>

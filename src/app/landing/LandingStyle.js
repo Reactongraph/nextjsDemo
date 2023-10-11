@@ -6,6 +6,7 @@ export const LandingHeadingGrid = styled(Grid)`
   display: flex;
   justify-content: space-between;
   height: 157px;
+  background-color: #f6f4ff;
 
   @media screen and (max-width: 900px) {
     height: 100px;
@@ -71,9 +72,9 @@ export const RightGrid = styled(Grid)`
   display: flex;
   border-left: 1px solid rgba(88, 89, 91, 0.3);
   color: rgba(88, 89, 91, 0.3);
-  width: 20%;
+
   gap: 8px;
-  padding-left: 10px;
+  padding: 20px;
 
   @media screen and (max-width: 900px) {
     display: none;

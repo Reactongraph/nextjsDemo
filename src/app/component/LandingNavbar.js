@@ -7,9 +7,6 @@ import {
   Menu,
   Avatar,
   Tooltip,
-  SearchIcon,
-  StyledInputBase,
-  InputBase,
   FormControl,
   Select,
   Grid,
@@ -19,15 +16,12 @@ import Image from "next/image";
 import {
   AppBarMain,
   SearchButton,
-  PaperSearch,
-  SearchStyle,
   AppBarInnerGrid,
   AppBarLeftGrid,
   AppBarRightGrid,
   AppBarExtendedGrid,
 } from "../listing/ListingStyle";
 import Toggle from "./Toggle.js";
-import Headingbar from "./Headingbar";
 
 export default function LandingNavbar() {
   const dummyMenuItems = [
@@ -73,7 +67,6 @@ export default function LandingNavbar() {
               sx={{
                 m: 1,
                 minWidth: 70,
-                fontFamily: "__Inter_Fallback_e66fe9",
               }}
             >
               <Select

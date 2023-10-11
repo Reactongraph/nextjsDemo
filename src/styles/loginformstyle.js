@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 export const MainGrid = styled(Grid)`
   width: 30%;
-  margin: auto;
+  margin: 10% 10%;
   background: #ffffff;
   justify-content: center;
   display: flex;
@@ -32,16 +32,11 @@ export const LeftGrid = styled(Grid)``;
 
 export const Paragraph = styled.p`
   color: #8692a6;
-  font-family: Plus Jakarta Sans;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0em;
   padding-top: 10px;
-
-  @media screen and (max-width: 1000px) {
-    font-size: 18px;
-  }
 
   @media screen and (max-width: 900px) {
     font-size: 16px;
@@ -57,18 +52,13 @@ export const Wrapper = styled(Grid)`
 `;
 
 export const Labels = styled(InputLabel)`
-  font-family: Plus Jakarta Sans;
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0em;
   padding-bottom: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: #58595b;
   top: 40px;
-
-  @media screen and (max-width: 900px) {
-    font-size: 16px;
-  }
 
   @media screen and (max-width: 600px) {
     font-size: 14px;
@@ -92,9 +82,7 @@ export const TextField1 = styled(TextField)`
 `;
 
 export const TextField2 = styled(FilledInput)`
-  @media screen and (max-width: 900px) {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 export const EmailFieldGrid = styled(Grid)`
@@ -151,7 +139,6 @@ export const MainButton = styled(Button)`
   background: #4a2cf5;
   border-radius: 6px;
   padding: 20px;
-  margin: 5px;
   width: 100%;
 
   @media screen and (max-width: 1000px) {
@@ -169,7 +156,6 @@ export const MainButton = styled(Button)`
 
 export const Heading = styled(Grid)`
   width: 100%;
-  font-family: Plus Jakarta Sans;
   font-size: 30px;
   font-weight: 700;
   line-height: 38px;
@@ -179,15 +165,10 @@ export const Heading = styled(Grid)`
 `;
 
 export const CheckField = styled(InputLabel)`
-  font-family: Plus Jakarta Sans;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0em;
-
-  @media screen and (max-width: 900px) {
-    font-size: 16px;
-  }
 
   @media screen and (max-width: 600px) {
     font-size: 14px;
@@ -197,14 +178,13 @@ export const CheckField = styled(InputLabel)`
 export const LinkGrid = styled(Grid)`
   width: 100%;
   display: flex;
-  padding: 20px;
+  padding: 4px 0px 20px 0px;
   justify-content: space-between;
   align-items: center;
 `;
 
 export const LinkField = styled(Link)`
-  font-family: Plus Jakarta Sans;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0em;
   color: #4a2cf5;

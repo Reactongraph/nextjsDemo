@@ -46,7 +46,7 @@ export const AppBarLeftGrid = styled(Grid)`
 `;
 
 export const AppBarRightGrid = styled(Grid)`
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: flex-end;
   padding-right: 5%;
@@ -158,6 +158,7 @@ export const HeadingGrid = styled(Grid)`
   display: flex;
   height: auto;
   justify-content: space-between;
+  background-color: #f6f4ff;
 `;
 
 export const DrawerHeader = styled(Grid)`
@@ -311,7 +312,7 @@ export const TextGrid = styled(Grid)`
 export const SliderStyle = styled(Slider)`
   color: rgba(74, 44, 245, 1);
   width: 92%;
-  margin: auto 15px;
+  margin: 4% 2%;
 `;
 
 export const FilterBottomGrid = styled(Grid)`
