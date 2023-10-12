@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { React, useState } from "react";
 import { Grid } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
@@ -89,10 +89,17 @@ export default function ListingContent() {
     },
   ];
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [selectedContent, setSelectedContent] = useState(data);
 
-  const handleDrawerOpen = () => {
+  const handleDrawerOpen = (content) => {
+    setSelectedContent(content);
     setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setSelectedContent(null);
+    setOpen(false);
   };
 
   return (
@@ -103,7 +110,10 @@ export default function ListingContent() {
         </SidebarHeadingGrid>
         <ContentAreaGrid>
           {data.map((content) => (
-            <DataMainGrid key={content.id} onClick={handleDrawerOpen}>
+            <DataMainGrid
+              key={content.id}
+              onClick={() => handleDrawerOpen(content)}
+            >
               <ContentHeadGrid>
                 <ContentLeftGrid>
                   <Image
@@ -148,6 +158,11 @@ export default function ListingContent() {
           ))}
         </ContentAreaGrid>
       </ListingContentGrid>
+      <ContentDrawer
+        open={open}
+        onClose={handleDrawerClose}
+        content={selectedContent}
+      />
     </>
   );
 }

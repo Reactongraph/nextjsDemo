@@ -6,7 +6,6 @@ import {
   Box,
   Menu,
   Avatar,
-  Tooltip,
   SearchIcon,
   StyledInputBase,
   InputBase,
@@ -128,30 +127,30 @@ export default function ListingDesign() {
             </PaperSearch>
 
             <Box>
-                <IconButton
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={handleClick}
-                >
-                  <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
-                </IconButton>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  {dummyMenuItems.map((item) => (
-                    <MenuItem
-                      onClick={handleClose}
-                      key={item.title}
-                      value={item.title}
-                    >
-                      {item.title}
-                    </MenuItem>
-                  ))}
-                </Menu>
+              <IconButton
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              >
+                <Avatar alt="Remy Sharp" src="./images/pictures.svg" />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {dummyMenuItems.map((item) => (
+                  <MenuItem
+                    onClick={handleClose}
+                    key={item.title}
+                    value={item.title}
+                  >
+                    {item.title}
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
           </AppBarRightGrid>
         </AppBarInnerGrid>

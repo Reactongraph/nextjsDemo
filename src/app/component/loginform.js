@@ -20,11 +20,15 @@ import {
   TextField2,
 } from "../../styles/loginformstyle";
 import { useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
 export default function LoginForm() {
+  const { data: session } = useSession();
+  console.log("session", session);
+
   const router = useRouter();
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
@@ -60,8 +64,19 @@ export default function LoginForm() {
       setFormValid("Password is set to 5-20 Characters. Please Re-Enter");
       return;
     }
-    router.push("/landing");
-    setFormValid(null);
+
+    signIn("credentials", {
+      email: emailInput,
+      password: passwordInput,
+    })
+      .then(() => {
+        router.push("/landing");
+        setFormValid(null);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     console.log(emailInput);
     console.log(passwordInput);
   };
@@ -85,6 +100,21 @@ export default function LoginForm() {
     }
     setPasswordError(false);
   };
+
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
+  return (
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
 
   return (
     <MainGrid>
