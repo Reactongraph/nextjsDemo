@@ -10,7 +10,6 @@ export const MainDiv = styled(Grid)`
 
 export const RightGrid = styled(Grid)`
   background: #4a2cf5;
-  width: 70%;
   background-image: url("./images/Rectangle.svg");
   position: relative;
 

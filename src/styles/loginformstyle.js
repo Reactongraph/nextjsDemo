@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 export const MainGrid = styled(Grid)`
   width: 30%;
-  margin: 10% 10%;
+  margin: auto;
   background: #ffffff;
   justify-content: center;
   display: flex;
@@ -87,7 +87,6 @@ export const TextField2 = styled(FilledInput)`
 
 export const EmailFieldGrid = styled(Grid)`
   width: 100%;
-  height: 57px;
   margin-top: 30px;
   border-radius: 6px;
   border: 1px;
@@ -110,7 +109,6 @@ export const EmailFieldGrid = styled(Grid)`
 
 export const PasswordFieldGrid = styled(Grid)`
   width: 100%;
-  height: 57px;
   margin-top: 30px;
   border-radius: 6px;
   border: 1px;
@@ -136,10 +134,36 @@ export const ShowButton = styled(Button)`
 `;
 
 export const MainButton = styled(Button)`
-  background: #4a2cf5;
+  background-color: #4a2cf5;
   border-radius: 6px;
   padding: 20px;
   width: 100%;
+
+  @media screen and (max-width: 1000px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 350px;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 310px;
+  }
+`;
+
+export const GitButton = styled(Button)`
+  border-radius: 6px;
+  padding: 20px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-transform: capitalize;
+  margin-top: 5px;
+
+  &:hover {
+    background-color: black;
+  }
 
   @media screen and (max-width: 1000px) {
     width: 600px;
@@ -181,6 +205,10 @@ export const LinkGrid = styled(Grid)`
   padding: 4px 0px 20px 0px;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    width: 62%;
+  }
 `;
 
 export const LinkField = styled(Link)`

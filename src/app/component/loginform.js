@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FormControl, Checkbox, Alert, Link } from "@mui/material";
+import { FormControl, Checkbox, Alert, Link, Button } from "@mui/material";
 import {
   Heading,
   Wrapper,
@@ -18,16 +18,18 @@ import {
   ShowButton,
   LinkGrid,
   TextField2,
+  GitButton,
 } from "../../styles/loginformstyle";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
 export default function LoginForm() {
-  const { data: session } = useSession();
-  console.log("session", session);
+  const { data: session, status } = useSession();
+  // console.log("session", session);
 
   const router = useRouter();
   const [emailInput, setEmailInput] = useState();
@@ -45,7 +47,7 @@ export default function LoginForm() {
     event.preventDefault();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!emailInput) {
@@ -65,20 +67,11 @@ export default function LoginForm() {
       return;
     }
 
-    signIn("credentials", {
-      email: emailInput,
-      password: passwordInput,
-    })
-      .then(() => {
-        router.push("/landing");
-        setFormValid(null);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const res = await signIn("Github");
 
-    console.log(emailInput);
-    console.log(passwordInput);
+    if (!res.error) {
+      router.push("/landing");
+    }
   };
 
   const handleEmail = () => {
@@ -101,20 +94,20 @@ export default function LoginForm() {
     setPasswordError(false);
   };
 
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  );
+  // if (session) {
+  //   return (
+  //     <>
+  //       Signed in as {session.user.email} <br />
+  //       <button onClick={() => signOut()}>Sign out</button>
+  //     </>
+  //   );
+  // }
+  // return (
+  //   <>
+  //     Not signed in <br />
+  //     <button onClick={() => signIn()}>Sign in</button>
+  //   </>
+  // );
 
   return (
     <MainGrid>
@@ -180,6 +173,10 @@ export default function LoginForm() {
               Login
             </MainButton>
           </Link>
+          <GitButton onClick={signIn}>
+            <GitHubIcon />
+            Login With GitHub
+          </GitButton>
           <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
         </Wrapper>
       </LeftGrid>
