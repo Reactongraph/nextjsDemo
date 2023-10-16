@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-import MenuItem from "@mui/material/MenuItem";
+import React, { useState } from "react";
 import {
   Box,
   Menu,
@@ -13,6 +12,7 @@ import {
   Select,
   Grid,
   IconButton,
+  MenuItem,
 } from "@mui/material";
 import Image from "next/image";
 import {
@@ -41,8 +41,8 @@ export default function ListingDesign() {
     },
   ];
 
-  const [list, setList] = React.useState("");
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [list, setList] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);

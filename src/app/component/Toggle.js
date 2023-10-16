@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 
 import {
   Grid,
@@ -13,8 +13,10 @@ import {
   Select,
   ToggleButtonGroup,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import {
+  Menu as MenuIcon,
+  ChevronRight as ChevronRightIcon,
+} from "@mui/icons-material";
 
 import {
   SideSearchButtonGrid,
@@ -24,8 +26,8 @@ import {
 } from "../listing/ListingStyle";
 
 export default function Toggle() {
-  const [view, setView] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [view, setView] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);

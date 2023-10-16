@@ -1,7 +1,6 @@
 import {
   RightGrid,
   LeftHeading,
-  TopImage,
   BottomImage,
   RightSideImage,
   LeftSideImage,

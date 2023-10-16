@@ -67,10 +67,14 @@ export default function LoginForm() {
       return;
     }
 
-    const res = await signIn("Github");
+    const res = await signIn("Sign in", {
+      redirect: false,
+      email: emailInput,
+      password: passwordInput,
+    });
 
     if (!res.error) {
-      router.push("/landing");
+      window.location.href("/landing");
     }
   };
 
@@ -173,12 +177,13 @@ export default function LoginForm() {
               Login
             </MainButton>
           </Link>
-          <GitButton onClick={signIn}>
-            <GitHubIcon />
-            Login With GitHub
-          </GitButton>
+
           <p>{formValid && <Alert severity="error">{formValid}</Alert>}</p>
         </Wrapper>
+        <GitButton type="button" onClick={() => signIn("github")}>
+          <GitHubIcon />
+          Login With GitHub
+        </GitButton>
       </LeftGrid>
     </MainGrid>
   );

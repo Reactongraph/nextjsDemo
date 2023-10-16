@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import Layout from "../component/Layout";
-import LandingScreen from "../component/LandingScreen";
+import { Layout, LandingScreen } from "../component/Layout";
 import { LandingPageMain } from "./LandingStyle";
 
 export default function page() {

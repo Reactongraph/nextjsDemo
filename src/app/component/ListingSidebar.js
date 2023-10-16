@@ -10,8 +10,8 @@ import {
   Autocomplete,
   Select,
   InputLabel,
+  Slider,
 } from "@mui/material";
-import Slider from "@mui/material/Slider";
 
 import {
   ListingSidebarMain,
@@ -120,6 +120,7 @@ export default function ListingSidebar() {
     console.log(companyViewInput);
   };
 
+  console.log(searchLocationInput);
   const handleClear = () => {
     setTermInput("");
     setTermExcludeInput("");

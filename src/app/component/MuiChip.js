@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { MuiChipsInputStyle } from "../listing/ListingStyle";
 
 export default function MuiChip() {
-  const [chips, setChips] = React.useState([]);
+  const [chips, setChips] = useState([]);
 
   const handleChange = (newChips) => {
     setChips(newChips);
