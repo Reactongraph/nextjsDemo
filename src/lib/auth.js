@@ -92,12 +92,13 @@ export const authOptions = {
         // Return null if user data could not be retrieved
 
         if (res.ok && user) {
-          const { id, name, email } = user?.user || "";
+          // const { id, name, email } = user?.user || "";
           const { access, refresh } = user.tokens || "";
           return {
-            id,
-            name,
-            email,
+            ...user?.user,
+            // id,
+            // name,
+            // email,
             accessToken: access.token,
             refreshToken: refresh.token,
             accessTokenExpires: access.expires,
