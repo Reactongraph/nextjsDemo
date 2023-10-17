@@ -12,6 +12,13 @@ import {
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { DrawerHeader } from "../listing/ListingStyle";
 import Image from "next/image";
+import {
+  BottomMainGrid,
+  BottomGrid,
+  AddToListButton,
+  SearchSimilarButton,
+  SyncButton,
+} from "../landing/DrawerStyle";
 
 export default function ContentDrawer({ open, onClose, content }) {
   const [value, setValue] = useState("1");
@@ -84,48 +91,12 @@ export default function ContentDrawer({ open, onClose, content }) {
           </Grid>
 
           <Grid style={{ display: "flex", gap: " 10px" }}>
-            <Button
-              style={{
-                backgroundColor: "#4A2CF5",
-                color: "#FFFFFF",
-                textAlign: "center",
-
-                fontStyle: "normal",
-                fontWeight: "600",
-                lineHeight: "normal",
-                textTransform: "capitalize",
-              }}
-            >
-              Add to list
-            </Button>
-            <Button
-              style={{
-                backgroundColor: "rgb(163 152 227)",
-                color: "#4A2CF5",
-
-                fontWeight: "600",
-                lineHeight: "20px",
-                letterSpacing: "0em",
-                textAlign: "center",
-                textTransform: "capitalize",
-              }}
-            >
-              Search Similar
-            </Button>
-            <Button
-              style={{
-                backgroundColor: "rgb(222 223 225)",
-                color: "#000000",
-                fontWeight: "600",
-                lineHeight: "20px",
-                letterSpacing: "0em",
-                textAlign: "center",
-                textTransform: "capitalize",
-              }}
-            >
+            <AddToListButton>Add to list</AddToListButton>
+            <SearchSimilarButton>Search Similar</SearchSimilarButton>
+            <SyncButton>
               Sync
               <SyncIcon />
-            </Button>
+            </SyncButton>
           </Grid>
         </Grid>
       </DrawerHeader>
@@ -177,19 +148,19 @@ export default function ContentDrawer({ open, onClose, content }) {
               content here', making it look like readable English.
             </p>
             <h3>Sizing</h3>
-            <Grid>
-              <Grid style={{ display: "flex", gap:"10px" }}>
+            <BottomMainGrid>
+              <BottomGrid>
                 <Image
                   src="/images/TotalEmployee.png"
                   height={40}
                   width={40}
                 ></Image>
                 <Grid>
-                <h4>0</h4>
-                <p>Total Employees</p>
+                  <h4>0</h4>
+                  <p>Total Employees</p>
                 </Grid>
-              </Grid>
-              <Grid style={{ display: "flex", gap:"10px" }}>
+              </BottomGrid>
+              <BottomGrid>
                 <Image
                   src="/images/Total Revenue.png"
                   height={40}
@@ -199,17 +170,19 @@ export default function ContentDrawer({ open, onClose, content }) {
                   <h4>0</h4>
                   <p>Total Revenue</p>
                 </Grid>
-              </Grid>
-              <Grid>
+              </BottomGrid>
+              <BottomGrid>
                 <Image
                   src="/images/Website Visits.png"
                   height={40}
                   width={40}
                 ></Image>
-                <h4>15.1k</h4>
-                <p>Website Visits</p>
-              </Grid>
-            </Grid>
+                <Grid>
+                  <h4>15.1k</h4>
+                  <p>Website Visits</p>
+                </Grid>
+              </BottomGrid>
+            </BottomMainGrid>
           </TabPanel>
           <TabPanel value="2">Item Two</TabPanel>
           <TabPanel value="3">Item Three</TabPanel>
